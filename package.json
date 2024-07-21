@@ -14,7 +14,11 @@
     "flowbite-react": "^0.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router": "^6.25.1",
+    "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.12",
+    "tailwind-merge": "^2.4.0",
     "typescript": "^4.9.5"
   },
   "scripts": {
