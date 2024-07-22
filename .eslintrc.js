@@ -5,13 +5,14 @@ const project = resolve(process.cwd(), 'tsconfig.json');
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   parser: '@typescript-eslint/parser',
-   parserOptions: {
+  parserOptions: {
     project: ['tsconfig.json'],
     ecmaFeatures: {
       jsx: true
     },
     ecmaVersion: 2018
   },
+  exclude: ['node_modules', 'babel.config.js'],
   extends: [
     'prettier',
     'plugin:prettier/recommended',
@@ -78,7 +79,8 @@ module.exports = {
     JSX: true
   },
   env: {
-    node: true
+    node: true,
+    jest: true
   },
   settings: {
     'import/resolver': {
