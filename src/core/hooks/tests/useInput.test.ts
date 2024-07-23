@@ -1,7 +1,7 @@
 import { UseInputState } from '../types/useInput';
 import { useInput } from '../useInput';
 import { renderHook, RenderResult } from '@testing-library/react-hooks';
-
+import { act } from 'react-dom/test-utils';
 describe('useInput render', () => {
   let renderResult: RenderResult<
     UseInputState<{
@@ -9,10 +9,12 @@ describe('useInput render', () => {
       message: string;
     }>
   >;
-  const { result } = renderHook(() =>
-    useInput('initial', { isError: false, message: '' })
-  );
-  renderResult = result;
+  beforeEach(() => {
+    const { result } = renderHook(() =>
+      useInput('initial', { isError: false, message: '' })
+    );
+    renderResult = result;
+  });
 
   test('Then: value should be "initial"', () => {
     expect(renderResult.current.value).toBe('initial');
@@ -24,7 +26,9 @@ describe('useInput render', () => {
 
   describe('When: onChange is called with "new value"', () => {
     beforeEach(() => {
-      renderResult.current.onChange('new value');
+      act(() => {
+        renderResult.current.onChange({ target: { value: 'new value' } });
+      });
     });
 
     test('Then: value should be "new value"', () => {
