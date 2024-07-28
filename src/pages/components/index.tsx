@@ -1,14 +1,8 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { useInput } from '../../core/hooks/useInput';
 import { titleValidator } from '../../core/utils/validator/titleValidator';
-const StyledDiv = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: red;
-`;
 
 function ComponentPage() {
   const input = useInput({
