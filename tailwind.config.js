@@ -15,6 +15,9 @@ module.exports = {
       border: {
         gray: '#D9D9D9',
         gray2: '#CDCDCD'
+      },
+      error: {
+        main: '#FF1A43'
       }
     },
     extend: {}

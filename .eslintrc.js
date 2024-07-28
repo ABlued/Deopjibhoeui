@@ -12,7 +12,7 @@ module.exports = {
     },
     ecmaVersion: 2018
   },
-  exclude: ['node_modules', 'babel.config.js'],
+  ignorePatterns: ['node_modules', 'dist'],
   extends: [
     'prettier',
     'plugin:prettier/recommended',
