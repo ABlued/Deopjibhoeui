@@ -2,16 +2,21 @@ import { UseInputState } from '../types/useInput';
 import { useInput } from '../useInput';
 import { renderHook, RenderResult } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
+import { titleValidator } from '../../utils/validator/titleValidator';
 describe('useInput render', () => {
   let renderResult: RenderResult<
     UseInputState<{
       isError: boolean;
-      message: string;
+      message?: string;
     }>
   >;
   beforeEach(() => {
     const { result } = renderHook(() =>
-      useInput('initial', { isError: false, message: '' })
+      useInput({
+        text: 'initial',
+        initError: { isError: false, message: '' },
+        validator: titleValidator
+      })
     );
     renderResult = result;
   });
@@ -33,6 +38,22 @@ describe('useInput render', () => {
 
     test('Then: value should be "new value"', () => {
       expect(renderResult.current.value).toBe('new value');
+    });
+
+    describe('When: onChange is called with ""', () => {
+      beforeEach(() => {
+        act(() => {
+          renderResult.current.onChange('');
+        });
+      });
+
+      test('Then: value should be "" and error should be { isError: true, message: 필수 항목입니다. } ', () => {
+        expect(renderResult.current.value).toBe('');
+        expect(renderResult.current.error).toStrictEqual({
+          isError: true,
+          message: '필수 항목입니다.'
+        });
+      });
     });
   });
 
