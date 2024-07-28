@@ -2,6 +2,8 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import { useInput } from '../../core/hooks/useInput';
+import { titleValidator } from '../../core/utils/validator/titleValidator';
 const StyledDiv = styled.div`
   width: 100px;
   height: 100px;
@@ -9,6 +11,10 @@ const StyledDiv = styled.div`
 `;
 
 function ComponentPage() {
+  const input = useInput({
+    text: '',
+    validator: titleValidator
+  });
   return (
     <div
       style={{
@@ -25,7 +31,7 @@ function ComponentPage() {
         }}
       >
         <Button text={'button'} onClick={() => {}} />
-        <Input value="" onChange={() => {}} placeholder={'input'} />
+        <Input {...input} placeholder={'input'} className={'w-[100%]'} />
       </div>
     </div>
   );

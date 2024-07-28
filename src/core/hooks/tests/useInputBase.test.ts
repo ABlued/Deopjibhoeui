@@ -1,5 +1,5 @@
-import { UseInputState } from '../types/useInput';
-import { useInput } from '../useInput';
+import { UseInputState } from '../types/useInputBase';
+import { useInputBase } from '../useInputBase';
 import { renderHook, RenderResult } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
 import { titleValidator } from '../../utils/validator/titleValidator';
@@ -12,7 +12,7 @@ describe('useInput render', () => {
   >;
   beforeEach(() => {
     const { result } = renderHook(() =>
-      useInput({
+      useInputBase({
         text: 'initial',
         initError: { isError: false, message: '' },
         validator: titleValidator
