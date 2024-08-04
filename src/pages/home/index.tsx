@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import HomepageBackground from '../../assets/images/overviewBackground.png';
 import Button from '../../components/Button/Button';
+import { routePath } from '../../modules/router/routePath';
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <div>
       <img
@@ -20,7 +23,9 @@ function HomePage() {
         </p>
         <Button
           text="시작하기"
-          onClick={() => {}}
+          onClick={() => {
+            navigate(routePath.setTitle);
+          }}
           className={'bg-primary-dark'}
         />
       </div>

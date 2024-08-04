@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
+import Card from '../../components/Card/Card';
 import Input from '../../components/Input/Input';
 import { useInput } from '../../core/hooks/useInput';
 import { titleValidator } from '../../core/utils/validator/titleValidator';
@@ -26,6 +27,7 @@ function ComponentPage() {
       >
         <Button text={'button'} onClick={() => {}} />
         <Input {...input} placeholder={'input'} className={'w-[100%]'} />
+        <Card>{'card'}</Card>
       </div>
     </div>
   );
