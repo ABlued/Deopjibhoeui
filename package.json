@@ -2,6 +2,7 @@
   "name": "deopjibhoeui",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +20,7 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
-    "typescript": "^4.9.5"
+    "typescript": "5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
