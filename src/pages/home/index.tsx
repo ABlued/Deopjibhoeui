@@ -12,7 +12,7 @@ function HomePage() {
         alt="background"
         className="w-[100vw] h-[100vh] absolute z-[-1]"
       />
-      <div className="flex flex-col items-center justify-center gap-[38px] h-[100vh] text-center whitespace-pre">
+      <div className="flex flex-col items-center justify-center gap-[38px] w-[100vw] h-[100vh] text-center whitespace-pre">
         <p className="text-[#000000] text-[48px] font-bold ">
           {'덮집회의로\n 정산을 쉽고, 빠르게,\n 그리고 차분하게'}
         </p>

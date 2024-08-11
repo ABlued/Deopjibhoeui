@@ -1,6 +1,7 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ValidationResult } from '../../core/utils/types/validate';
+import SubPlaceholder from './SubPlaceholder';
 
 export interface InputProps {
   value?: string;
@@ -10,6 +11,7 @@ export interface InputProps {
   className?: string;
   error?: ValidationResult;
   fullWidth?: boolean;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
 function Input({
@@ -19,14 +21,15 @@ function Input({
   subPlaceholder,
   className,
   error,
-  fullWidth
+  fullWidth,
+  inputProps
 }: InputProps) {
   return (
     <div>
       <input
         type={'text'}
         className={twMerge(
-          'pl-[0] indent-0 border-0 p-[10px 0] border-b-[1px] border-[#D9D9D9] focus:border-primary-dark focus:ring-0 placeholder:text-border-gray',
+          'pl-[0] indent-0 border-0 p-[10px 0] border-b-[1px] border-border-gray focus:border-primary-dark focus:ring-0 placeholder:text-border-gray',
           error?.isError && 'border-error-main focus:border-error-main',
           fullWidth && 'w-full',
           className
@@ -34,12 +37,11 @@ function Input({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        {...inputProps}
       />
       <div>
         {subPlaceholder && !error?.isError && (
-          <p className={'text-border-gray text-xs mt-[4px]'}>
-            {subPlaceholder}
-          </p>
+          <SubPlaceholder text={subPlaceholder} />
         )}
         <p
           className={twMerge(
