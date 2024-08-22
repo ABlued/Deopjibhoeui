@@ -20,7 +20,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "zustand": "^4.5.5"
   },
   "scripts": {
     "start": "react-scripts start",
