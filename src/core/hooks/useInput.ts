@@ -1,15 +1,11 @@
-import { FunctionValidation, ValidationResult } from '../utils/types/validate';
+import { UseInput, UseInputParams } from './types/useInput';
 import { useInputBase } from './useInputBase';
 
 export const useInput = ({
   text,
   initError,
   validator
-}: {
-  text: string;
-  initError?: ValidationResult;
-  validator?: FunctionValidation<ValidationResult>;
-}) => {
+}: UseInputParams): UseInput => {
   const inputBase = useInputBase({
     text,
     initError: initError ?? {
