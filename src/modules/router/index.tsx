@@ -4,6 +4,7 @@ import ComponentPage from '../../pages/components/index';
 import HomePage from '../../pages/home/index';
 import SetTitlePage from '../../pages/setTitle/index';
 import { routePath } from './routePath';
+import ResultPage from '../../pages/result';
 
 const AppLayout = () => (
   <>
@@ -22,6 +23,7 @@ export const router = createBrowserRouter(
       <Route index element={<HomePage />} />,
       <Route element={<BackgroundLayout />}>
         <Route path={routePath.setTitle} element={<SetTitlePage />} />,
+        <Route path={routePath.result} element={<ResultPage />} />,
         <Route path={routePath.components} element={<ComponentPage />} />,
       </Route>
     </Route>
