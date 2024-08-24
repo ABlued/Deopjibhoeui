@@ -27,11 +27,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest --passWithNoTests --colors",
-    "test:changed": "jest --passWithNoTests --colors --onlyChanged",
     "eject": "react-scripts eject",
-    "lint": "eslint . && tsc",
+    "lint": "eslint . --cache && tsc",
     "test:all": "jest --passWithNoTests --colors",
-    "test:watch": "jest --passWithNoTests --colors -- watch"
+    "test:watch": "jest --passWithNoTests --colors -- watch",
+    "test:changed": "jest --passWithNoTests --colors --onlyChanged",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +68,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.1.5",
     "jest": "27.5.1",
     "jest-environment-jsdom": "27.5.1",
     "jest-svg-transformer": "^1.0.0",

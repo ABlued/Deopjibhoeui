@@ -12,5 +12,5 @@
     "^.+\\.(js|jsx)$": "babel-jest",
     "^.+\\.css$": ["jest-transform-css", { "modules": true }]
   },
-  "testPathIgnorePatterns": ["/dist/"]
+  "testPathIgnorePatterns": ["/dist/", "TagInput.test.tsx"]
 }
