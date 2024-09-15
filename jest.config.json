@@ -3,14 +3,12 @@
   "testEnvironment": "jsdom",
   "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"],
   "moduleNameMapper": {
-    "^.+\\.svg$": "<rootDir>/src/config/fileMock.js",
-    "^.+\\.(css|scss)$": "identity-obj-proxy"
+    "\\.(css|scss)$": "<rootDir>/src/test/mocks/identity-obj-proxy-esm.js",
+    "\\.svg$": "<rootDir>/src/test/mocks/svgMock.js"
   },
   "transform": {
-    "^.+\\.svg$": "jest-transformer-svg",
     "^.+\\.(ts|tsx)?$": "ts-jest",
-    "^.+\\.(js|jsx)$": "babel-jest",
-    "^.+\\.css$": ["jest-transform-css", { "modules": true }]
+    "^.+\\.(js|jsx)$": "babel-jest"
   },
-  "testPathIgnorePatterns": ["/dist/", "TagInput.test.tsx"]
+  "testPathIgnorePatterns": ["/dist/"]
 }
