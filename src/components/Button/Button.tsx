@@ -20,15 +20,14 @@ text-white bg-primary-main hover:bg-primary-light focus:ring-4 focus:ring-blue-3
   {
     variants: {
       variant: {
-        default: ' shadow-none active:scale-100',
-        grey: ' bg-slate-buttongrey ',
-        blue: ' bg-accent-blue'
+        default: 'shadow-none active:scale-100',
+        grey: 'bg-slate-buttongrey ',
+        blue: 'bg-accent-blue'
       },
       size: {
-        default: '',
-        md: ' w-[6.875rem] h-[2.375rem] text-[1rem] rounded-md',
-        lg: 'w-[21.875rem] h-[7.5rem] text-[3rem] rounded-3xl',
-        wlg: 'w-[24rem] h-[5.25rem] text-[2rem]'
+        icon: 'h-9 w-9',
+        small: 'w-20 h-10 rounded-md px-3 text-xs',
+        middle: 'w-26 h-12 rounded-md px-8'
       },
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none',
@@ -41,7 +40,7 @@ text-white bg-primary-main hover:bg-primary-light focus:ring-4 focus:ring-blue-3
     },
     defaultVariants: {
       variant: 'default',
-      size: 'default',
+      size: 'small',
       disabled: false,
       fullWidth: false
     }
