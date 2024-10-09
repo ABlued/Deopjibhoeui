@@ -4,7 +4,7 @@ import ComponentPage from '../../pages/components/index';
 import HomePage from '../../pages/home/index';
 import SetTitlePage from '../../pages/setTitle/index';
 import { routePath } from './routePath';
-import ResultPage from '../../pages/result';
+import ResultPage from '../../pages/calculateResult';
 
 const AppLayout = () => (
   <>
