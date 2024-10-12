@@ -9,6 +9,7 @@ import {
 } from '../types/setWindowEvent';
 import { useNavigation } from 'react-router';
 import ReactModal from 'react-modal';
+import { BreakPoint } from '../../../types/style/breakPoint';
 
 export const openDialog = (state: DialogState) => {
   sendWindowEvent<WindowActionEvent, DialogState>('window_open_popup', {
@@ -22,6 +23,33 @@ export const closeDialog = (dialogId: string) => {
 };
 
 type State = DialogState;
+
+const dialogWidth: Record<BreakPoint, React.CSSProperties> = {
+  xs: {
+    width: '450px',
+    maxWidth: '450px'
+  },
+  sm: {
+    width: '600px',
+    maxWidth: '600px'
+  },
+  md: {
+    width: '900px',
+    maxWidth: '900px'
+  },
+  lg: {
+    width: '1200px',
+    maxWidth: '1200px'
+  },
+  xl: {
+    width: '1536px',
+    maxWidth: '1536px'
+  }
+};
+
+const getDialogWidth = (maxWidth?: BreakPoint) => {
+  return maxWidth ? dialogWidth[maxWidth] : dialogWidth.md;
+};
 
 const Dialog = () => {
   const navigation = useNavigation();
@@ -63,7 +91,10 @@ const Dialog = () => {
               content: {
                 opacity: 1,
                 transition: 'opacity 225ms cubic-bezier(0.4, 0, 0.2, 1)',
-                inset: undefined
+                inset: undefined,
+                borderRadius: '20px',
+                boxShadow: '4px 12px 20px rgba(0, 0, 0, 0.25)',
+                ...getDialogWidth(state.maxWidth)
               },
               overlay: {
                 display: 'flex',

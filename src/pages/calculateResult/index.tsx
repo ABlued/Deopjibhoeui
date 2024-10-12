@@ -6,6 +6,7 @@ import CalculateResult from '../../modules/result/CalculateResultContainer';
 import Button from '../../components/Button/Button';
 import { ReactComponent as PlusIcon } from '../../assets/svg/plus.svg';
 import { openDialog } from '../../core/utils/dialog';
+import { ResultDialog } from '../../modules/result/dialog';
 function ResultPage() {
   return (
     <div className="w-[100vw] h-[100vh] flex items-center justify-center">
@@ -17,10 +18,7 @@ function ResultPage() {
               text="내역 추가"
               size={'small'}
               onClick={() => {
-                openDialog({
-                  content: () => <div>내역 추가</div>,
-                  dialogId: 'addHistory'
-                });
+                openDialog(ResultDialog.addHistory());
               }}
               startIcon={() => (
                 <PlusIcon
