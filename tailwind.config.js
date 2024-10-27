@@ -18,6 +18,14 @@ module.exports = {
       },
       error: {
         main: '#FF1A43'
+      },
+      column: {
+        main: '#F1F6F7'
+      },
+      text: {
+        main: '#1A1E27',
+        light: '#505866',
+        lighter: '#B1B8C0'
       }
     },
     extend: {}

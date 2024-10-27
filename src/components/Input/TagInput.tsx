@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './TagInput.css';
-import { ReactComponent as RemoveIcon } from '../../assets/svg/RemoveIcon.svg';
 import { InputTag } from '../../core/hooks/types/useTagInput';
+import Label from '../Div/Label';
 
 export interface TagInputProps {
   tags: InputTag[];
@@ -17,28 +16,24 @@ const TagInput = ({
   placeholder
 }: TagInputProps) => {
   return (
-    <div className={styles}>
-      <div className="tags-input">
-        <input
-          className="tags-input-field"
-          type="text"
-          onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)}
-          placeholder={placeholder}
-        />
-        <ul id="tags">
-          {tags.map((tag, index) => (
-            <li key={index} className="tag">
-              <span className="tag-title">{tag}</span>
-              <span
-                className="tag-close-icon"
-                onClick={() => removeTags(index)}
-              >
-                <RemoveIcon />
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="w-full inline-block rounded-sm">
+      <input
+        className="w-full bg-transparent border-0 p-2.5 border-b border-border-gray focus:border-primary-dark focus:outline-none focus:ring-0 placeholder:text-border-gray"
+        type="text"
+        onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)}
+        placeholder={placeholder}
+      />
+      <ul className="flex flex-wrap p-0 mt-2">
+        {tags.map((tag, index) => (
+          <Label
+            key={index}
+            divClassName="flex items-center h-[100%] font-[600]"
+            tag={tag}
+            id={index}
+            onDelete={() => removeTags(index)}
+          />
+        ))}
+      </ul>
     </div>
   );
 };
