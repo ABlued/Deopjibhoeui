@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as RemoveIcon } from '../../assets/svg/RemoveIcon.svg';
+import RemoveIcon from '../../assets/svg/RemoveIcon.svg?react';
 import { cn } from '../../core/utils/classname/cn';
 
 export interface LabelProps {

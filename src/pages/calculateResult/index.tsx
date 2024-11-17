@@ -4,7 +4,7 @@ import Members from '../../modules/result/MembersContainer';
 import CalculateHistory from '../../modules/result/CalculateHistoryContainer';
 import CalculateResult from '../../modules/result/CalculateResultContainer';
 import Button from '../../components/Button/Button';
-import { ReactComponent as PlusIcon } from '../../assets/svg/plus.svg';
+import PlusIcon from '../../assets/svg/Plus.svg?react';
 import { openDialog } from '../../core/utils/dialog';
 import { ResultDialog } from '../../modules/result/dialog';
 function ResultPage() {

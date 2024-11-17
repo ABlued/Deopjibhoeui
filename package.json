@@ -21,15 +21,15 @@
     "react-modal": "^3.16.1",
     "react-router": "^6.25.1",
     "react-router-dom": "^6.25.1",
-    "react-scripts": "5.0.1",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
     "typescript": "5.3.3",
     "zustand": "^4.5.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
     "test": "jest --passWithNoTests --colors",
     "eject": "react-scripts eject",
     "lint": "eslint . --cache && tsc",
@@ -64,6 +64,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/eslint": "^8.56.10",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.19",
     "babel-jest": "27.5.1",
     "eslint": "8.56.0",
@@ -79,6 +80,8 @@
     "prettier": "^3.3.2",
     "tailwindcss": "^3.4.5",
     "ts-jest": "^27.1.4",
-    "typescript-eslint": "^7.15.0"
+    "typescript-eslint": "^7.15.0",
+    "vite": "^5.4.11",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }

@@ -4,7 +4,7 @@
   "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"],
   "moduleNameMapper": {
     "\\.(css|scss)$": "<rootDir>/src/test/mocks/identity-obj-proxy-esm.js",
-    "\\.svg$": "<rootDir>/src/test/mocks/svgMock.js"
+    "^(.+\\.svg)\\?react$": "<rootDir>/src/test/mocks/svgMock.js"
   },
   "transform": {
     "^.+\\.(ts|tsx)?$": "ts-jest",
