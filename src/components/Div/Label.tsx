@@ -6,6 +6,7 @@ export interface LabelProps {
   tag: string;
   id: number;
   divClassName?: string;
+  iconProps?: React.SVGProps<SVGElement>;
   onDelete?: (index: number) => void;
 }
 
@@ -24,6 +25,7 @@ function Label({ tag, id, onDelete, divClassName }: LabelProps) {
           onClick={() => onDelete(id)}
         >
           <RemoveIcon />
+          <RemoveIcon {...iconProps} />
         </span>
       )}
     </li>

@@ -31,6 +31,9 @@ const TagInput = ({
             tag={tag}
             id={index}
             onDelete={() => removeTags(index)}
+            iconProps={{
+              width: 12
+            }}
           />
         ))}
       </ul>
