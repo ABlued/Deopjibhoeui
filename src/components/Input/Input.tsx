@@ -2,6 +2,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ValidationResult } from '../../core/utils/types/validate';
 import SubPlaceholder from './SubPlaceholder';
+import InputBase from './InputBase';
 
 export interface InputProps {
   value?: string;
@@ -26,18 +27,14 @@ function Input({
 }: InputProps) {
   return (
     <div>
-      <input
-        type={'text'}
-        className={twMerge(
-          'pl-[0] indent-0 border-0 p-[10px 0] border-b-[1px] border-border-gray focus:border-primary-dark focus:ring-0 placeholder:text-border-gray',
-          error?.isError && 'border-error-main focus:border-error-main',
-          fullWidth && 'w-full',
-          className
-        )}
-        placeholder={placeholder}
+      <InputBase
         value={value}
         onChange={onChange}
-        {...inputProps}
+        placeholder={placeholder}
+        error={error}
+        fullWidth={fullWidth}
+        className={className}
+        inputProps={inputProps}
       />
       <div>
         {subPlaceholder && !error?.isError && (
