@@ -4,9 +4,11 @@ import { ValidationResult } from '../../core/utils/types/validate';
 import SubPlaceholder from './SubPlaceholder';
 import InputBase from './InputBase';
 
-export interface InputProps {
+export interface InputProps<
+  ChangeParams = React.ChangeEvent<HTMLInputElement>
+> {
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeParams) => void;
   placeholder?: string;
   subPlaceholder?: string;
   className?: string;
