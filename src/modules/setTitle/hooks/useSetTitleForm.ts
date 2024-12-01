@@ -22,7 +22,11 @@ export const useSetTitleForm = (): UseSetTitleForm => {
     setNames(tagInput.tags);
     navigate(routePath.result);
   };
-  const disabled = title.error.isError || tagInput.tags.length === 0;
+
+  const disabled =
+    title.value.length === 0 ||
+    title.error.isError ||
+    tagInput.tags.length === 0;
 
   return {
     title,
