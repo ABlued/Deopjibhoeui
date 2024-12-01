@@ -1,3 +1,5 @@
+declare module '*.css';
+
 declare module '*.svg?react' {
   const content: SVGComponent;
   export default content;
