@@ -11,7 +11,3 @@ export const ResultDialog: ResultDialogState = {
     };
   }
 };
-
-function add(a: number, b: number) {
-  // 함수의 내부를 구현하시오.
-}

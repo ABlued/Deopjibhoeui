@@ -25,6 +25,7 @@
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
     "typescript": "5.3.3",
+    "uuid": "^11.0.3",
     "zustand": "^4.5.5"
   },
   "scripts": {
