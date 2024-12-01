@@ -16,12 +16,7 @@ function Members() {
         </div>
         <div className="p-[0px] w-[70%] flex gap-2 items-center ml-2 mr-2">
           {names.map((name, index) => (
-            <Label
-              key={index}
-              id={index}
-              tag={name}
-              divClassName={'w-min-[50px] justify-start  h-[34px]'}
-            />
+            <Label key={index} id={index} tag={name} divClassName="p-1" />
           ))}
         </div>
       </div>

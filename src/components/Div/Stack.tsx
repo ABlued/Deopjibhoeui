@@ -8,7 +8,7 @@ type Props = {
 
 function Stack({ children, className }: Props): JSX.Element {
   return (
-    <div className={cn(className, 'flex flex-col gap-[8px]')}>{children}</div>
+    <div className={cn('flex flex-col gap-[8px]', className)}>{children}</div>
   );
 }
 
