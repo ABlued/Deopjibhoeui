@@ -4,7 +4,7 @@ import { useHistoryStore } from './useHistory';
 import { v4 as uuidv4 } from 'uuid';
 
 export const useAddHistory = () => {
-  const { setHistories: set } = useHistoryStore();
+  const { pushHistories: set } = useHistoryStore();
   const buyer = useInput({
     text: '',
     validator: emptyValidator

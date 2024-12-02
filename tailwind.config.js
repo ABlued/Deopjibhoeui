@@ -26,6 +26,9 @@ module.exports = {
         main: '#1A1E27',
         light: '#505866',
         lighter: '#B1B8C0'
+      },
+      table: {
+        column: '#F1F6F7'
       }
     },
     extend: {}

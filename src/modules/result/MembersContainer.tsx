@@ -10,7 +10,7 @@ function Members() {
       <Divider />
       <div className="flex  w-[100%] h-[54px]">
         <div className="flex-2 w-[30%] bg-column-main p-[10px]">
-          <span className="flex items-center text-[24px] font-[600] text-text-light">
+          <span className="flex items-center table-header-title">
             정산할 사람들
           </span>
         </div>

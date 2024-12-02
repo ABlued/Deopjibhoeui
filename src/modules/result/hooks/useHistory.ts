@@ -3,12 +3,12 @@ import { History } from '../types/History';
 
 type HistoryStore = {
   histories: History[];
-  setHistories: (histories: History) => void;
+  pushHistories: (histories: History) => void;
 };
 
 export const useHistoryStore = create<HistoryStore>((set) => ({
   histories: [],
-  setHistories: (histories: History) =>
+  pushHistories: (histories: History) =>
     set((store) => ({
       histories: [...store.histories, histories]
     }))
