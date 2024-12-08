@@ -31,7 +31,7 @@ function CalculateHistory() {
           {
             id: 'cost',
             header: '비용',
-            accessorFn: (row) => row.cost
+            accessorFn: (row) => row.cost.toLocaleString()
           }
         ]}
         rowData={histories}

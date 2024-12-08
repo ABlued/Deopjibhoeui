@@ -18,15 +18,13 @@ function AddHistory({ dialogId }: HasDialogId) {
           <Input
             fullWidth
             placeholder="어떤 결제인가요?"
-            value={purchaseHistory.value}
-            onChange={purchaseHistory.onChange}
+            {...purchaseHistory}
           />
 
           <Input
             fullWidth
             placeholder="언제 결제했나요?"
-            value={purchaseDate.value}
-            onChange={purchaseDate.onChange}
+            {...purchaseDate}
             inputProps={{
               type: 'text',
               onFocus: (e) => {
@@ -34,17 +32,11 @@ function AddHistory({ dialogId }: HasDialogId) {
               }
             }}
           />
-          <Input
-            fullWidth
-            placeholder="누가 결제했나요?"
-            value={buyer.value}
-            onChange={buyer.onChange}
-          />
+          <Input fullWidth placeholder="누가 결제했나요?" {...buyer} />
           <LocaleNumberInput
             fullWidth
             placeholder="비용은 얼마인가요?"
-            value={cost.value}
-            onChange={cost.onChange}
+            {...cost}
           />
         </Stack>
       </div>
