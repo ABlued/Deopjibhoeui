@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import NumberInput from '../NumberInput';
+import LocaleNumberInput from '../LocaleNumberInput';
 
 describe('NumberInput', () => {
   test('should format the value as a number with commas', () => {
     const { getByDisplayValue } = render(
-      <NumberInput value="1000" onChange={() => {}} />
+      <LocaleNumberInput value="1000" onChange={() => {}} />
     );
     expect(getByDisplayValue('1,000')).toBeInTheDocument();
   });
@@ -13,7 +13,7 @@ describe('NumberInput', () => {
   test('should call onChange with only numeric characters', () => {
     const handleChange = jest.fn();
     const { getByDisplayValue } = render(
-      <NumberInput value="1000" onChange={handleChange} />
+      <LocaleNumberInput value="1000" onChange={handleChange} />
     );
     const input = getByDisplayValue('1,000');
 
@@ -23,14 +23,14 @@ describe('NumberInput', () => {
 
   test('should handle empty value', () => {
     const { getByDisplayValue } = render(
-      <NumberInput value="" onChange={() => {}} />
+      <LocaleNumberInput value="" onChange={() => {}} />
     );
-    expect(getByDisplayValue('0')).toBeInTheDocument();
+    expect(getByDisplayValue('')).toBeInTheDocument();
   });
 
   test('should handle non-numeric initial value', () => {
     const { getByDisplayValue } = render(
-      <NumberInput value="abc" onChange={() => {}} />
+      <LocaleNumberInput value="abc" onChange={() => {}} />
     );
     expect(getByDisplayValue('0')).toBeInTheDocument();
   });

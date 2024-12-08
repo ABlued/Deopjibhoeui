@@ -5,7 +5,7 @@ import Button from '../../../../components/Button/Button';
 import { HasDialogId } from '../../../../core/utils/types/dialog';
 import { closeDialog } from '../../../../core/utils/dialog';
 import { useAddHistory } from '../../hooks/useAddHistory';
-import NumberInput from '../../../../components/Input/NumberInput';
+import LocaleNumberInput from '../../../../components/Input/LocaleNumberInput';
 
 function AddHistory({ dialogId }: HasDialogId) {
   const { buyer, cost, purchaseDate, purchaseHistory, isDisabled, submit } =
@@ -40,7 +40,7 @@ function AddHistory({ dialogId }: HasDialogId) {
             value={buyer.value}
             onChange={buyer.onChange}
           />
-          <NumberInput
+          <LocaleNumberInput
             fullWidth
             placeholder="비용은 얼마인가요?"
             value={cost.value}
