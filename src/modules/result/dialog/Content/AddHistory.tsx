@@ -8,23 +8,25 @@ import { useAddHistory } from '../../hooks/useAddHistory';
 import LocaleNumberInput from '../../../../components/Input/LocaleNumberInput';
 
 function AddHistory({ dialogId }: HasDialogId) {
-  const { buyer, cost, purchaseDate, purchaseHistory, isDisabled, submit } =
-    useAddHistory();
+  const { form, cost } = useAddHistory();
+
   return (
     <div>
       <div className="pt-[24px] pl-[24px] pr-[24px]">
         <p className="text-[24px] font-[700] mb-[42px]">비용을 입력하세요</p>
         <Stack>
           <Input
+            key={'purchaseHistory'}
             fullWidth
             placeholder="어떤 결제인가요?"
-            {...purchaseHistory}
+            {...form.formProps.purchaseHistory}
           />
 
           <Input
+            key={'purchaseDate'}
             fullWidth
             placeholder="언제 결제했나요?"
-            {...purchaseDate}
+            {...form.formProps.purchaseDate}
             inputProps={{
               type: 'text',
               onFocus: (e) => {
@@ -32,7 +34,12 @@ function AddHistory({ dialogId }: HasDialogId) {
               }
             }}
           />
-          <Input fullWidth placeholder="누가 결제했나요?" {...buyer} />
+          <Input
+            key={'buyer'}
+            fullWidth
+            placeholder="누가 결제했나요?"
+            {...form.formProps.buyer}
+          />
           <LocaleNumberInput
             fullWidth
             placeholder="비용은 얼마인가요?"
@@ -43,9 +50,9 @@ function AddHistory({ dialogId }: HasDialogId) {
       <div className="flex justify-end gap-2 mt-[46px]">
         <Button
           text="추가"
-          disabled={isDisabled()}
-          onClick={() => {
-            submit();
+          disabled={!form.isValid()}
+          onClick={(e) => {
+            form.onSubmit(e);
             closeDialog(dialogId);
           }}
         />

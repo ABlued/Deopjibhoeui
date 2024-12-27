@@ -84,7 +84,6 @@ const Dialog = () => {
             key={idx}
             isOpen={true}
             onRequestClose={(event) => {
-              console.log('### event: ', event);
               closeDialog(state.dialogId);
             }}
             style={{

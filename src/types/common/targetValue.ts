@@ -3,3 +3,9 @@ export type TargetValue<T> = {
     value: T;
   };
 };
+
+export type TargetName = {
+  target: {
+    name?: string;
+  };
+};

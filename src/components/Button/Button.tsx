@@ -7,7 +7,6 @@ export interface ButtonProps
     VariantProps<typeof ButtonVariants> {
   text: string;
   disabled?: boolean;
-  onClick: () => void;
   className?: string;
   fullWidth?: boolean;
   startIcon?: () => JSX.Element;

@@ -8,6 +8,7 @@ export interface InputProps<
   ChangeParams = React.ChangeEvent<HTMLInputElement>
 > {
   value?: string;
+  name?: string;
   onChange?: (e: ChangeParams) => void;
   placeholder?: string;
   subPlaceholder?: string;
@@ -19,6 +20,7 @@ export interface InputProps<
 
 function Input({
   value,
+  name,
   onChange,
   placeholder,
   subPlaceholder,
@@ -31,6 +33,7 @@ function Input({
     <div>
       <InputBase
         value={value}
+        name={name}
         onChange={onChange}
         placeholder={placeholder}
         error={error}

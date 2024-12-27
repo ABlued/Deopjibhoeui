@@ -15,6 +15,7 @@ function InputBase(props: InputProps) {
       placeholder={props.placeholder}
       value={props.value}
       onChange={props.onChange}
+      name={props.name}
       {...props.inputProps}
     />
   );

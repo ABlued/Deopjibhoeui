@@ -1,55 +1,36 @@
+import { useForm } from '../../../core/hooks/useForm';
 import { useInput } from '../../../core/hooks/useInput';
-import { emptyValidator } from '../../../core/utils/validator/emptyValidator';
 import { useHistoryStore } from './useHistory';
 import { v4 as uuidv4 } from 'uuid';
 
 export const useAddHistory = () => {
   const { pushHistories: set } = useHistoryStore();
-  const buyer = useInput({
-    text: '',
-    validator: emptyValidator
+  const cost = useInput({ text: '' });
+  const form = useForm({
+    initialValues: {
+      buyer: '',
+      purchaseDate: '',
+      purchaseHistory: ''
+    },
+    onSubmit: () => {
+      set({
+        id: uuidv4(),
+        cost: Number(cost.value),
+        buyer: form.values.buyer,
+        purchaseDate: form.values.purchaseDate,
+        purchaseHistory: form.values.purchaseHistory
+      });
+    },
+    validators: {},
+    requires: {
+      buyer: true,
+      purchaseDate: true,
+      purchaseHistory: true
+    }
   });
-
-  const cost = useInput({
-    text: '',
-    validator: emptyValidator
-  });
-
-  const purchaseDate = useInput({
-    text: '',
-    validator: emptyValidator
-  });
-
-  const purchaseHistory = useInput({
-    text: '',
-    validator: emptyValidator
-  });
-
-  const isDisabled = () => {
-    return (
-      buyer.error.isError ||
-      cost.error.isError ||
-      purchaseDate.error.isError ||
-      purchaseHistory.error.isError
-    );
-  };
-
-  const submit = () => {
-    set({
-      id: uuidv4(),
-      buyer: buyer.value,
-      cost: Number(cost.value),
-      purchaseDate: purchaseDate.value,
-      purchaseHistory: purchaseHistory.value
-    });
-  };
 
   return {
-    buyer,
-    cost,
-    purchaseDate,
-    purchaseHistory,
-    isDisabled,
-    submit
+    form,
+    cost
   };
 };
