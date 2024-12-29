@@ -6,9 +6,12 @@ import { HasDialogId } from '../../../../core/utils/types/dialog';
 import { closeDialog } from '../../../../core/utils/dialog';
 import { useAddHistory } from '../../hooks/useAddHistory';
 import LocaleNumberInput from '../../../../components/Input/LocaleNumberInput';
+import Select from '../../../../components/Select/Select';
+import { useFriendsNameStore } from '../../../setTitle/hooks/useFriendsNameStore';
 
 function AddHistory({ dialogId }: HasDialogId) {
-  const { form, cost } = useAddHistory();
+  const { form, cost, buyer, onChangeBuyer } = useAddHistory();
+  const { names } = useFriendsNameStore();
 
   return (
     <div>
@@ -34,11 +37,13 @@ function AddHistory({ dialogId }: HasDialogId) {
               }
             }}
           />
-          <Input
-            key={'buyer'}
-            fullWidth
+          <Select
+            items={names.map((name) => ({ value: name, label: name }))}
             placeholder="누가 결제했나요?"
-            {...form.formProps.buyer}
+            selected={buyer}
+            onChange={(value) => {
+              onChangeBuyer(value);
+            }}
           />
           <LocaleNumberInput
             fullWidth
