@@ -16,7 +16,8 @@ function CalculateHistory() {
           {
             id: 'purchaseDate',
             header: '날짜',
-            accessorFn: (row) => row.purchaseDate
+            accessorFn: (row) =>
+              new Date(row.purchaseDate).toLocaleString('ko-KR')
           },
           {
             id: 'purchaseHistory',
@@ -31,7 +32,7 @@ function CalculateHistory() {
           {
             id: 'cost',
             header: '비용',
-            accessorFn: (row) => row.cost.toLocaleString()
+            accessorFn: (row) => `${row.cost.toLocaleString()}원`
           }
         ]}
         rowData={histories}
