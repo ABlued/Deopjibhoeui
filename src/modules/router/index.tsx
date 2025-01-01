@@ -14,20 +14,13 @@ const AppLayout = () => (
   </>
 );
 
-const BackgroundLayout = () => (
-  <div className="bg-[#EDEDED]">
-    <Outlet />
-  </div>
-);
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path={routePath.home} element={<AppLayout />}>
       <Route index element={<HomePage />} />,
-      <Route element={<BackgroundLayout />}>
-        <Route path={routePath.setTitle} element={<SetTitlePage />} />,
-        <Route path={routePath.result} element={<ResultPage />} />,
-        <Route path={routePath.components} element={<ComponentPage />} />,
-      </Route>
+      <Route path={routePath.setTitle} element={<SetTitlePage />} />,
+      <Route path={routePath.result} element={<ResultPage />} />,
+      <Route path={routePath.components} element={<ComponentPage />} />,
     </Route>
   )
 );
