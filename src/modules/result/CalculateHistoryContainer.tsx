@@ -6,7 +6,6 @@ import Stack from '../../components/Div/Stack';
 
 function CalculateHistory() {
   const { histories } = useHistoryStore();
-  console.log('### histories', histories);
 
   return (
     <Stack className="gap-[52px]">
@@ -31,8 +30,12 @@ function CalculateHistory() {
           },
           {
             id: 'cost',
-            header: '비용',
-            accessorFn: (row) => `${row.cost.toLocaleString()}원`
+            header: () => <p style={{ textAlign: 'right' }}>비용</p>,
+            accessorFn: (row) => `${row.cost.toLocaleString()}원`,
+            meta: {
+              headerClassName: 'text-right',
+              cellClassName: 'text-right'
+            }
           }
         ]}
         rowData={histories}

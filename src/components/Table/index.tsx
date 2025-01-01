@@ -35,8 +35,10 @@ function Table<T>({
               {headerGroup.headers.map((header, index) => (
                 <th
                   key={header.id}
-                  className={`flex-2 w-[30%] bg-column-main p-[10px] border-[lightgray] border-y-[1px] ${cn(
-                    index !== headerGroup.headers.length - 1 && 'border-r-[1px]'
+                  className={`flex-2 w-[30%] bg-column-main p-[10px] border-[lightgray] border-y-[1px] text-center ${cn(
+                    index !== headerGroup.headers.length - 1 &&
+                      'border-r-[1px]',
+                    header.column.columnDef.meta?.headerClassName
                   )}`}
                 >
                   {header.isPlaceholder
@@ -61,8 +63,11 @@ function Table<T>({
                 {cells.map((cell, index) => (
                   <td
                     key={cell.id}
-                    className={`px-6 py-4 border-[lightgray] border-b-[1px]
-                    ${cn(index !== cells.length - 1 && 'border-r-[1px]')}
+                    className={`px-6 py-4 border-[lightgray] border-b-[1px] text-center
+                    ${cn(
+                      index !== cells.length - 1 && 'border-r-[1px]',
+                      cell.column.columnDef.meta?.cellClassName
+                    )}
                     `}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
