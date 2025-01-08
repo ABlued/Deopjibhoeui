@@ -10,7 +10,7 @@ import Select from '../../../../components/Select/Select';
 import { useFriendsNameStore } from '../../../setTitle/hooks/useFriendsNameStore';
 
 function AddHistory({ dialogId }: HasDialogId) {
-  const { form, cost, buyer, onChangeBuyer } = useAddHistory();
+  const { form, cost, buyer, onChangeBuyer, isValid } = useAddHistory();
   const { names } = useFriendsNameStore();
 
   return (
@@ -41,9 +41,7 @@ function AddHistory({ dialogId }: HasDialogId) {
             items={names.map((name) => ({ value: name, label: name }))}
             placeholder="누가 결제했나요?"
             selected={buyer}
-            onChange={(value) => {
-              onChangeBuyer(value);
-            }}
+            onChange={onChangeBuyer}
           />
           <LocaleNumberInput
             fullWidth
@@ -55,7 +53,7 @@ function AddHistory({ dialogId }: HasDialogId) {
       <div className="flex justify-end gap-2 mt-[46px]">
         <Button
           text="추가"
-          disabled={!form.isValid()}
+          disabled={!isValid()}
           onClick={(e) => {
             form.onSubmit(e);
             closeDialog(dialogId);

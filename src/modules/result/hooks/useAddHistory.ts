@@ -12,9 +12,7 @@ export const useAddHistory = () => {
   const [buyer, setBuyer] = useState(names[0]);
 
   const onChangeBuyer = (value: string) => {
-    if (names.includes(value)) {
-      setBuyer(value);
-    }
+    setBuyer(value);
   };
 
   const form = useForm({
@@ -38,10 +36,15 @@ export const useAddHistory = () => {
     }
   });
 
+  const isValid = (): boolean => {
+    return form.isValid() && cost.value.length > 0 && buyer.length > 0;
+  };
+
   return {
     buyer,
     onChangeBuyer,
     form,
-    cost
+    cost,
+    isValid
   };
 };

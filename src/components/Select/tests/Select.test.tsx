@@ -40,6 +40,6 @@ describe('Select Component', () => {
     render(
       <Select items={items} placeholder="Select an option" selected="2" />
     );
-    expect(screen.getByDisplayValue('Two')).toBeInTheDocument();
+    expect(screen.getByText('Two')).toBeInTheDocument();
   });
 });

@@ -10,34 +10,36 @@ interface Props {
   placeholder: string;
   selected?: string;
   onChange?: (value: string) => void;
+  className?: string;
 }
 
-function Select({ items, selected, onChange, placeholder }: Props) {
+function Select({ items, selected, onChange, placeholder, className }: Props) {
   return (
-    <form className="max-w-sm mx-auto">
-      <label htmlFor="underline_select" className="sr-only">
-        {placeholder}
-      </label>
-      <select
-        id="underline_select"
-        className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-        onChange={(e) => {
-          onChange?.(e.currentTarget.value);
-        }}
-      >
-        {items.sort().map((item) => {
-          return (
-            <option
-              key={item.value}
-              value={item.value}
-              selected={item.value === selected}
-            >
-              {item.label}
-            </option>
-          );
-        })}
-      </select>
-    </form>
+    <div>
+      <form className="max-w-sm mx-auto">
+        <label htmlFor="underline_select" className="sr-only">
+          {placeholder}
+        </label>
+        <select
+          id="underline_select"
+          className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          onChange={(e) => {
+            onChange?.(e.currentTarget.value);
+          }}
+        >
+          <option selected value={''}>
+            {placeholder}
+          </option>
+          {items.sort().map((item) => {
+            return (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            );
+          })}
+        </select>
+      </form>
+    </div>
   );
 }
 
