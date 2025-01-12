@@ -4,7 +4,7 @@ import Members from '../../modules/result/MembersContainer';
 import CalculateHistory from '../../modules/result/CalculateHistoryContainer';
 import CalculateResult from '../../modules/result/CalculateResultContainer';
 import Button from '../../components/Button/Button';
-import PlusIcon from '../../assets/svg/Plus.svg?react';
+import { VscAdd } from 'react-icons/vsc';
 import { openDialog } from '../../core/utils/dialog';
 import { ResultDialog } from '../../modules/result/dialog';
 import { useTitleStore } from '../../modules/setTitle/hooks/useTitleStore';
@@ -23,7 +23,7 @@ function ResultPage() {
                 openDialog(ResultDialog.addHistory());
               }}
               startIcon={() => (
-                <PlusIcon
+                <VscAdd
                   width={20}
                   height={20}
                   style={{

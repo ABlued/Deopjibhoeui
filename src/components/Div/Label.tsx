@@ -1,6 +1,6 @@
 import React from 'react';
-import RemoveIcon from '../../assets/svg/RemoveIcon.svg?react';
 import { cn } from '../../core/utils/classname/cn';
+import { VscClose } from 'react-icons/vsc';
 
 export interface LabelProps {
   tag: string;
@@ -18,15 +18,15 @@ function Label({ tag, id, onDelete, divClassName, iconProps }: LabelProps) {
         divClassName
       )}
     >
-      <span className="mt-[3px]">{tag}</span>
+      <span className="">{tag}</span>
       {onDelete && (
         <span
           className={
-            'text-center ml-2 mr-2 text-blue-700 rounded-full cursor-pointer'
+            'text-lg text-center ml-2 mr-2 text-blue-700 rounded-full cursor-pointer'
           }
           onClick={() => onDelete(id)}
         >
-          <RemoveIcon {...iconProps} />
+          <VscClose {...iconProps} />
         </span>
       )}
     </li>
