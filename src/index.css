@@ -25,3 +25,7 @@ body {
 .table-header-title {
   @apply text-[24px] font-[700] text-text-light;
 }
+
+.clickable {
+  @apply cursor-pointer flex justify-center items-center p-[6px] rounded-lg hover:bg-[#f5f5f5];
+}

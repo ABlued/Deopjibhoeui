@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   ColumnDef,
+  TableOptions,
   flexRender,
   getCoreRowModel,
   useReactTable
@@ -9,17 +10,20 @@ import { cn } from '../../core/utils/classname/cn';
 
 function Table<T>({
   rowData,
-  columns
+  columns,
+  tableOptions
 }: {
   rowData: T[];
   columns: ColumnDef<T, any>[];
+  tableOptions?: Partial<TableOptions<T>>;
 }) {
   const [data, _setData] = React.useState(() => [...rowData]);
 
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
+    ...tableOptions
   });
 
   React.useEffect(() => {

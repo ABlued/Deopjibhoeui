@@ -26,6 +26,7 @@ function Select({ items, selected, onChange, placeholder, className }: Props) {
           onChange={(e) => {
             onChange?.(e.currentTarget.value);
           }}
+          defaultValue={''}
         >
           <option selected value={''}>
             {placeholder}
