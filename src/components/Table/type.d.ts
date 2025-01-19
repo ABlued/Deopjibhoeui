@@ -4,6 +4,11 @@ declare module '@tanstack/table-core' {
   interface ColumnMeta<TData extends RowData, TValue> {
     headerClassName?: string;
     cellClassName?: string;
+    editComponent?: React.ComponentType<{
+      value: TValue;
+      setValue: (value: TValue) => void;
+    }>;
+    canEdit?: boolean;
   }
 }
 

@@ -7,6 +7,7 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { cn } from '../../core/utils/classname/cn';
+import EditTableCell from './EditTableCell';
 
 function Table<T>({
   rowData,
@@ -57,7 +58,7 @@ function Table<T>({
           ))}
         </thead>
         <tbody className="border-b-[1px solid lightgray]">
-          {table.getRowModel().rows.map((row) => {
+          {table.getRowModel().rows.map((row, rowIndex) => {
             const cells = row.getVisibleCells();
             return (
               <tr
@@ -74,7 +75,16 @@ function Table<T>({
                     )}
                     `}
                   >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    {cell.column.columnDef.meta?.canEdit ? (
+                      <EditTableCell
+                        key={cell.id}
+                        cell={cell}
+                        rowIndex={rowIndex}
+                        table={table}
+                      />
+                    ) : (
+                      flexRender(cell.column.columnDef.cell, cell.getContext())
+                    )}
                   </td>
                 ))}
               </tr>
