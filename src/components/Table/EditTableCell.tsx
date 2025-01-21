@@ -57,7 +57,11 @@ function EditTableCell<T>({
           <VscCheck
             onClick={() => {
               setIsEditing(false);
-              table.options.meta?.updateData(rowIndex, cell.id, value);
+              table.options.meta?.updateData(
+                rowIndex,
+                cell.id.split('_')[1],
+                value
+              );
             }}
           />
         </Clickable>
@@ -72,7 +76,7 @@ function EditTableCell<T>({
             setIsEditing(true);
           }}
         >
-          {value as string}
+          {initialValue as string}
         </div>
       </Clickable>
     );

@@ -15,7 +15,7 @@ interface Props {
 
 function Select({ items, selected, onChange, placeholder, className }: Props) {
   return (
-    <div>
+    <div className={className}>
       <form className="max-w-sm mx-auto">
         {placeholder && (
           <label htmlFor="underline_select" className="sr-only">
