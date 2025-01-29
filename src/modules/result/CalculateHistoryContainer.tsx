@@ -2,16 +2,13 @@ import Title from './components/Title';
 import { useHistoryStore } from './hooks/useHistory';
 import Table from '../../components/Table';
 import Stack from '../../components/Div/Stack';
-import { ColumnDef } from '@tanstack/react-table';
 import { History } from './types/History';
 import Select from '../../components/Select/Select';
 import { useFriendsNameStore } from '../setTitle/hooks/useFriendsNameStore';
 import LocaleNumberInput from '../../components/Input/LocaleNumberInput';
 import Input from '../../components/Input/Input';
+import { emptyValidator } from '../../core/utils/validator/emptyValidator';
 
-const defaultColumn: Partial<ColumnDef<History>> = {
-  cell: ({ getValue, row: { index }, column: { id }, table }) => {}
-};
 function CalculateHistory() {
   const { histories, setHistoriesByKey } = useHistoryStore();
   const { names } = useFriendsNameStore();
@@ -48,9 +45,9 @@ function CalculateHistory() {
             id: 'purchaseHistory',
             header: '내용',
             accessorFn: (row) => row.purchaseHistory,
-
             meta: {
-              canEdit: true
+              canEdit: true,
+              validate: emptyValidator
             }
           },
           {
@@ -79,6 +76,7 @@ function CalculateHistory() {
               headerClassName: 'text-right',
               cellClassName: 'text-right',
               canEdit: true,
+              validate: emptyValidator,
               editComponent: ({ value, setValue }) => {
                 return (
                   <LocaleNumberInput
@@ -86,6 +84,7 @@ function CalculateHistory() {
                     className="w-[100px]"
                     value={value}
                     onChange={(value) => setValue(value)}
+                    error={emptyValidator(value)}
                   />
                 );
               }

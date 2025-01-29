@@ -2,16 +2,19 @@ import { Cell, Table } from '@tanstack/react-table';
 import React from 'react';
 import Input from '../Input/Input';
 import Clickable from '../Div/Clickable';
-import { VscCheck } from 'react-icons/vsc';
+import { ValidationResult } from '../../core/utils/types/validate';
+import CheckIcon from '../Icon/CheckIcon';
 
 function EditTableCell<T>({
   cell,
   rowIndex,
-  table
+  table,
+  validate
 }: {
   cell: Cell<T, unknown>;
   rowIndex: number;
   table: Table<T>;
+  validate?: (value: unknown) => ValidationResult;
 }) {
   const initialValue = cell.getValue();
   const [value, setValue] = React.useState(initialValue);
@@ -49,12 +52,17 @@ function EditTableCell<T>({
                 value={value as string}
                 onChange={(e) => setValue(e.target.value)}
                 className="flex-1 mr-[10px]"
+                error={validate?.(value)}
+                errorMessageClassName={'text-left'}
               />
             );
           }
         })()}
-        <Clickable className="w-[32px] h-[32px] text-primary-main">
-          <VscCheck
+        <Clickable
+          className="w-[32px] h-[32px] text-primary-main"
+          disabled={validate?.(value)?.isError}
+        >
+          <CheckIcon
             onClick={() => {
               setIsEditing(false);
               table.options.meta?.updateData(
@@ -63,6 +71,7 @@ function EditTableCell<T>({
                 value
               );
             }}
+            disabled={validate?.(value)?.isError}
           />
         </Clickable>
       </div>

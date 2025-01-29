@@ -81,6 +81,7 @@ function Table<T>({
                         cell={cell}
                         rowIndex={rowIndex}
                         table={table}
+                        validate={cell.column.columnDef.meta?.validate}
                       />
                     ) : (
                       flexRender(cell.column.columnDef.cell, cell.getContext())

@@ -1,4 +1,5 @@
 import '@tanstack/react-table';
+import { ValidationResult } from '../../core/utils/types/validate';
 
 declare module '@tanstack/table-core' {
   interface ColumnMeta<TData extends RowData, TValue> {
@@ -9,6 +10,7 @@ declare module '@tanstack/table-core' {
       setValue: (value: TValue) => void;
     }>;
     canEdit?: boolean;
+    validate?: (value: TValue) => ValidationResult;
   }
 }
 

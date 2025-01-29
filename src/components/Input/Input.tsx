@@ -15,6 +15,7 @@ export interface InputProps<
   subPlaceholder?: string;
   className?: string;
   error?: ValidationResult;
+  errorMessageClassName?: string;
   fullWidth?: boolean;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 }
@@ -30,7 +31,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       error,
       fullWidth,
-      inputProps
+      inputProps,
+      errorMessageClassName
     },
     ref
   ) => {
@@ -55,7 +57,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <p
               className={twMerge(
                 'text-error-main text-xs mt-[4px] h-[1rem]',
-                error?.isError ? 'visible' : 'invisible'
+                error?.isError ? 'visible' : 'invisible',
+                errorMessageClassName
               )}
             >
               {error?.message ?? ''}
