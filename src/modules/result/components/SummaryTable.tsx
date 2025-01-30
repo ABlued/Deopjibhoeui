@@ -12,7 +12,6 @@ function SummaryTable() {
     expense: histories,
     members: names
   });
-  console.log('### transaction', transaction);
   return (
     <Table
       columns={[

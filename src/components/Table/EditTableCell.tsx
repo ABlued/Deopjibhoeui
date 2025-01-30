@@ -9,12 +9,14 @@ function EditTableCell<T>({
   cell,
   rowIndex,
   table,
-  validate
+  validate,
+  transform
 }: {
   cell: Cell<T, unknown>;
   rowIndex: number;
   table: Table<T>;
   validate?: (value: unknown) => ValidationResult;
+  transform?: (value: unknown) => unknown;
 }) {
   const initialValue = cell.getValue();
   const [value, setValue] = React.useState(initialValue);
@@ -68,7 +70,7 @@ function EditTableCell<T>({
               table.options.meta?.updateData(
                 rowIndex,
                 cell.id.split('_')[1],
-                value
+                transform ? transform(value) : value
               );
             }}
             disabled={validate?.(value)?.isError}

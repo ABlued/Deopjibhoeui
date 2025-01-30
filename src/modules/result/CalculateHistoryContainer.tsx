@@ -77,6 +77,7 @@ function CalculateHistory() {
               cellClassName: 'text-right',
               canEdit: true,
               validate: emptyValidator,
+              transform: Number,
               editComponent: ({ value, setValue }) => {
                 return (
                   <LocaleNumberInput
@@ -100,8 +101,6 @@ function CalculateHistory() {
                 columnId as keyof History,
                 value as History[keyof History]
               );
-              // TODO: transform data
-              // TODO: validate data
             }
           }
         }}
