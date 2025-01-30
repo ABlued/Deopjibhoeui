@@ -31,7 +31,6 @@ export const useAddHistory = () => {
     },
     validators: {},
     requires: {
-      purchaseDate: true,
       purchaseHistory: true
     }
   });

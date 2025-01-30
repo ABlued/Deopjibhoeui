@@ -8,6 +8,7 @@ import { useFriendsNameStore } from '../setTitle/hooks/useFriendsNameStore';
 import LocaleNumberInput from '../../components/Input/LocaleNumberInput';
 import Input from '../../components/Input/Input';
 import { emptyValidator } from '../../core/utils/validator/emptyValidator';
+import { isNotDate } from '../../core/utils/date/isNotDate';
 
 function CalculateHistory() {
   const { histories, setHistoriesByKey } = useHistoryStore();
@@ -21,8 +22,11 @@ function CalculateHistory() {
           {
             id: 'purchaseDate',
             header: '날짜',
-            accessorFn: (row) =>
-              new Date(row.purchaseDate).toLocaleString('ko-KR'),
+            accessorFn: (row) => {
+              return !isNotDate(row.purchaseDate)
+                ? new Date(row.purchaseDate).toLocaleString('ko-KR')
+                : '설정하지 않음';
+            },
             meta: {
               canEdit: true,
               editComponent: ({ value, setValue }) => {
