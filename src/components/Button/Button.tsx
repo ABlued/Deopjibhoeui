@@ -1,11 +1,12 @@
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { ButtonHTMLAttributes } from 'react';
 import { cn } from '../../core/utils/classname/cn';
-
+import { VscLoading } from 'react-icons/vsc';
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
-  text: string;
+  text?: string;
+  isLoading?: boolean;
   disabled?: boolean;
   className?: string;
   fullWidth?: boolean;
@@ -32,6 +33,10 @@ flex items-center justify-center gap-2 text-white bg-primary-main hover:bg-prima
         true: 'opacity-50 cursor-default pointer-events-none',
         false: ''
       },
+      isLoading: {
+        true: 'opacity-50 cursor-default pointer-events-none',
+        false: ''
+      },
       fullWidth: {
         true: 'w-full',
         false: ''
@@ -54,19 +59,22 @@ function Button({
   className,
   fullWidth,
   disabled,
-  startIcon
+  startIcon,
+  isLoading
 }: ButtonProps) {
   return (
     <>
       <button
         type="button"
         className={cn(
-          ButtonVariants({ variant, size, disabled, fullWidth }),
+          ButtonVariants({ variant, size, disabled, fullWidth, isLoading }),
           className
         )}
         onClick={onClick}
       >
-        {startIcon && startIcon()}
+        {!isLoading && startIcon && startIcon()}
+        {isLoading && <VscLoading className="animate-spin" />}
+
         {text}
       </button>
     </>

@@ -8,31 +8,38 @@ import { VscAdd } from 'react-icons/vsc';
 import { openDialog } from '../../core/utils/dialog';
 import { ResultDialog } from '../../modules/result/dialog';
 import { useTitleStore } from '../../modules/setTitle/hooks/useTitleStore';
+import ResultDownloadButton from '../../modules/result/components/DownloadButton';
+import { DOWNLOAD_BUTTON_AREA_DOM_ID } from '../../modules/constant/domId';
+
 function ResultPage() {
   const { title } = useTitleStore();
+
   return (
     <div className="flex items-center justify-center">
       <Card className="w-[calc(100vw-40px)] box-border p-[60px] my-[50px]">
         <div className="flex flex-col gap-[62px]">
           <div className="flex justify-between">
             <span className="font-bold text-[36px]">정산하기: {title}</span>
-            <Button
-              text="내역 추가"
-              size={'small'}
-              onClick={() => {
-                openDialog(ResultDialog.addHistory());
-              }}
-              startIcon={() => (
-                <VscAdd
-                  width={20}
-                  height={20}
-                  style={{
-                    display: 'inline'
-                  }}
-                />
-              )}
-              className="w-[120px] font-bold text-[16px] "
-            />
+            <div id={DOWNLOAD_BUTTON_AREA_DOM_ID} className="flex gap-2">
+              <ResultDownloadButton />
+              <Button
+                text="내역 추가"
+                size={'small'}
+                onClick={() => {
+                  openDialog(ResultDialog.addHistory());
+                }}
+                startIcon={() => (
+                  <VscAdd
+                    width={20}
+                    height={20}
+                    style={{
+                      display: 'inline'
+                    }}
+                  />
+                )}
+                className="w-[120px] font-bold text-[16px]"
+              />
+            </div>
           </div>
           <Members />
           <CalculateResult />
