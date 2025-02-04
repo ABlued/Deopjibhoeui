@@ -4,7 +4,7 @@ import download from 'downloadjs';
 import { VscArrowDown } from 'react-icons/vsc';
 import { useTitleStore } from '../../setTitle/hooks/useTitleStore';
 import { useState } from 'react';
-import { DOWNLOAD_BUTTON_AREA_DOM_ID } from '../../constant/domId';
+import { DOWNLOAD_BUTTON_AREA_DOM_CLASSNAME } from '../../constant/className';
 
 function ResultDownloadButton() {
   const { title } = useTitleStore();
@@ -13,36 +13,19 @@ function ResultDownloadButton() {
     setIsLoading(true);
 
     const root = document.getElementById('root') as HTMLElement;
-    const capture = root.cloneNode(true) as HTMLElement;
-
-    console.log('copy', capture);
-    const elementToRemove = capture.querySelector(
-      `#${DOWNLOAD_BUTTON_AREA_DOM_ID}`
-    );
-    console.log('elementToRemove', elementToRemove);
-
-    if (elementToRemove) {
-      elementToRemove.remove();
-    }
-
-    // 스타일 유지하면서 화면에서 안 보이도록 설정
-    // TODO: 복사된 엘리먼트가 화면에 완벽히 보이지 않도록 설정
-    capture.style.position = 'absolute';
-    capture.style.top = '0';
-    capture.style.left = '10px';
-    capture.style.zIndex = '-1';
-    root.appendChild(capture);
-
-    // 약간의 지연을 주어 렌더링을 기다림
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const filter = (node: HTMLElement) => {
+      const exclusionClasses = [DOWNLOAD_BUTTON_AREA_DOM_CLASSNAME];
+      return !exclusionClasses.some((classname) => {
+        return node.classList?.contains(classname);
+      });
+    };
 
     try {
-      const dataUrl = await htmlToImage.toPng(capture, { cacheBust: true });
+      const dataUrl = await htmlToImage.toPng(root, { filter: filter });
       download(dataUrl, `${title}_정산결과.png`);
     } catch (error) {
       console.error('이미지 생성 실패:', error);
     } finally {
-      root.removeChild(capture);
       setIsLoading(false);
     }
   };

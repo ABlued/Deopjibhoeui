@@ -9,7 +9,7 @@ import { openDialog } from '../../core/utils/dialog';
 import { ResultDialog } from '../../modules/result/dialog';
 import { useTitleStore } from '../../modules/setTitle/hooks/useTitleStore';
 import ResultDownloadButton from '../../modules/result/components/DownloadButton';
-import { DOWNLOAD_BUTTON_AREA_DOM_ID } from '../../modules/constant/domId';
+import { DOWNLOAD_BUTTON_AREA_DOM_CLASSNAME } from '../../modules/constant/className';
 
 function ResultPage() {
   const { title } = useTitleStore();
@@ -20,7 +20,7 @@ function ResultPage() {
         <div className="flex flex-col gap-[62px]">
           <div className="flex justify-between">
             <span className="font-bold text-[36px]">정산하기: {title}</span>
-            <div id={DOWNLOAD_BUTTON_AREA_DOM_ID} className="flex gap-2">
+            <div className={`${DOWNLOAD_BUTTON_AREA_DOM_CLASSNAME} flex gap-2`}>
               <ResultDownloadButton />
               <Button
                 text="내역 추가"
