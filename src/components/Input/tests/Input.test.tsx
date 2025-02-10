@@ -17,6 +17,7 @@ describe('Input', () => {
 
     fireEvent.change(input, { target: { value: 'new value' } });
     expect(handleChange).toHaveBeenCalledWith(expect.any(Object));
+    expect(input).toHaveValue('new value');
   });
 
   test('should display error message when error is present', () => {
@@ -25,6 +26,18 @@ describe('Input', () => {
       <Input placeholder="Enter text" error={error} />
     );
     expect(getByText('Error message')).toBeInTheDocument();
+  });
+
+  test('SubPlaceholder should not be displayed if there is a current error while subPlaceholder is present', () => {
+    const error = { isError: true, message: 'Error message' };
+    const { queryByText } = render(
+      <Input
+        placeholder="Enter text"
+        error={error}
+        subPlaceholder="Sub placeholder"
+      />
+    );
+    expect(queryByText('Sub placeholder')).not.toBeInTheDocument();
   });
 
   test('should display subPlaceholder when no error is present', () => {

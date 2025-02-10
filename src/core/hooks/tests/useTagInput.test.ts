@@ -1,6 +1,6 @@
 import { useTagInput } from '../useTagInput';
 import { UseTagInput } from '../types/useTagInput';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import { renderHook, RenderResult } from '@testing-library/react-hooks';
 
 describe('given: useTagInput is called', () => {

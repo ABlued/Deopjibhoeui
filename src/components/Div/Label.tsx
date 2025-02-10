@@ -18,9 +18,10 @@ function Label({ tag, id, onDelete, divClassName, iconProps }: LabelProps) {
         divClassName
       )}
     >
-      <span className="">{tag}</span>
+      <span>{tag}</span>
       {onDelete && (
         <span
+          role="button"
           className={
             'text-lg text-center ml-2 mr-2 text-blue-700 rounded-full cursor-pointer'
           }
