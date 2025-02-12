@@ -4,7 +4,7 @@ import Input from '../Input/Input';
 import Clickable from '../Div/Clickable';
 import { ValidationResult } from '../../core/utils/types/validate';
 import CheckIcon from '../Icon/CheckIcon';
-
+import { VscChromeClose } from 'react-icons/vsc';
 function EditTableCell<T>({
   cell,
   rowIndex,
@@ -32,34 +32,37 @@ function EditTableCell<T>({
       inputRef.current?.focus();
     }
   }, [isEditing]);
+
+  const getEditComponent = () => {
+    if (cell.column.columnDef.meta?.editComponent) {
+      const EditComponent = cell.column.columnDef.meta.editComponent;
+      return (
+        <EditComponent
+          value={value}
+          setValue={(value) => {
+            setValue(value);
+          }}
+        />
+      );
+    } else {
+      return (
+        <Input
+          ref={inputRef}
+          fullWidth
+          value={value as string}
+          onChange={(e) => setValue(e.target.value)}
+          className="flex-1 mr-[10px]"
+          error={validate?.(value)}
+          errorMessageClassName={'text-left'}
+        />
+      );
+    }
+  };
+
   if (isEditing) {
     return (
       <div className="flex justify-between items-center w-[100%]">
-        {(function () {
-          if (cell.column.columnDef.meta?.editComponent) {
-            const EditComponent = cell.column.columnDef.meta.editComponent;
-            return (
-              <EditComponent
-                value={value}
-                setValue={(value) => {
-                  setValue(value);
-                }}
-              />
-            );
-          } else {
-            return (
-              <Input
-                ref={inputRef}
-                fullWidth
-                value={value as string}
-                onChange={(e) => setValue(e.target.value)}
-                className="flex-1 mr-[10px]"
-                error={validate?.(value)}
-                errorMessageClassName={'text-left'}
-              />
-            );
-          }
-        })()}
+        {getEditComponent()}
         <Clickable
           className="w-[32px] h-[32px] text-primary-main"
           disabled={validate?.(value)?.isError}
@@ -74,6 +77,14 @@ function EditTableCell<T>({
               );
             }}
             disabled={validate?.(value)?.isError}
+          />
+        </Clickable>
+        <Clickable className="w-[32px] h-[32px] text-error-main">
+          <VscChromeClose
+            onClick={() => {
+              setIsEditing(false);
+              setValue(initialValue);
+            }}
           />
         </Clickable>
       </div>
