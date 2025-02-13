@@ -35,7 +35,7 @@ function HomePage() {
               onClick={() => {
                 navigate(routePath.setTitle);
               }}
-              className={'bg-primary-dark'}
+              className={'bg-primary-dark w-[300px] text-[16px] font-semibold'}
             />
           </div>
         </MouseParallaxChild>
