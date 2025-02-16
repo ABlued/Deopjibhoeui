@@ -5,7 +5,7 @@
   "type": "module",
   "dependencies": {
     "@tanstack/react-table": "^8.20.5",
-    "@types/downloadjs": "^8.0.5",
+    "@types/downloadjs": "1.4.6",
     "@types/node": "^16.18.101",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

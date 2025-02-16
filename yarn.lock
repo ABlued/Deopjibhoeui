@@ -2213,7 +2213,7 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
-"@types/downloadjs@^8.0.5":
+"@types/downloadjs@1.4.6":
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/@types/downloadjs/-/downloadjs-1.4.6.tgz#d03ed04d17332ebf3b47d7a04cbe745dab1ab8a9"
   integrity sha512-mp3w70vsaiLRT9ix92fmI9Ob2yJAPZm6tShJtofo2uHbN11G2i6a0ApIEjBl/kv3e9V7Pv7jMjk1bUwYWvMHvA==
