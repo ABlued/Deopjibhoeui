@@ -3,3 +3,7 @@ post.config.js
 jest.config.js
 postcss.config.cjs
 vite.config.js
+vitest.workspace.js
+/node_modules
+/dist
+/public
