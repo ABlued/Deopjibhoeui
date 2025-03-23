@@ -40,4 +40,7 @@ body {
   .tablet-card {
     @apply tablet:!rounded-none tablet:!shadow-none tablet:!bg-transparent;
   }
+  .truncate-text {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
 }

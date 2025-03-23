@@ -18,7 +18,7 @@ function Label({ tag, id, onDelete, divClassName, iconProps }: LabelProps) {
         divClassName
       )}
     >
-      <span>{tag}</span>
+      <span className="truncate-text">{tag}</span>
       {onDelete && (
         <span
           role="button"
