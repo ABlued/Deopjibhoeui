@@ -27,7 +27,8 @@ flex items-center justify-center gap-2 text-white bg-primary-main hover:bg-prima
       size: {
         icon: 'h-9 w-9',
         small: 'w-20 h-10 rounded-md px-3 text-xs',
-        middle: 'w-26 h-12 rounded-md px-8'
+        middle: 'w-26 h-12 rounded-md px-8',
+        default: 'rounded-md px-4'
       },
       disabled: {
         true: 'opacity-50 cursor-default pointer-events-none',
@@ -44,7 +45,7 @@ flex items-center justify-center gap-2 text-white bg-primary-main hover:bg-prima
     },
     defaultVariants: {
       variant: 'default',
-      size: 'small',
+      size: 'default',
       disabled: false,
       fullWidth: false
     }

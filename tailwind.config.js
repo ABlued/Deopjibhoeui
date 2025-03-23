@@ -4,7 +4,19 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx}',
     'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
+
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      mobile: { max: '360px' },
+      tablet: { max: '600px' },
+      laptop: '1200px',
+      desktop: '1536px'
+    },
     colors: {
       primary: {
         dark: '#1F4EF5',

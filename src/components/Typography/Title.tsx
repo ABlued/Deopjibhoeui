@@ -7,7 +7,11 @@ interface TitleProps {
 }
 
 function Title({ title, className }: TitleProps) {
-  return <p className={twMerge('text-[32px] font-bold', className)}>{title}</p>;
+  return (
+    <p className={twMerge('[font-size:2.5rem] font-bold', className)}>
+      {title}
+    </p>
+  );
 }
 
 export default Title;

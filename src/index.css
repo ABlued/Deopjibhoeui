@@ -22,10 +22,22 @@ body {
   background-color: #ededed;
 }
 
+@media (max-width: 600px) {
+  body {
+    background-color: #ffffff;
+  }
+}
+
 .table-header-title {
   @apply text-[24px] font-[700] text-text-light;
 }
 
 .clickable {
   @apply cursor-pointer flex justify-center items-center p-[6px] rounded-lg hover:bg-[#f5f5f5];
+}
+
+@layer components {
+  .tablet-card {
+    @apply tablet:!rounded-none tablet:!shadow-none tablet:!bg-transparent;
+  }
 }
