@@ -14,6 +14,7 @@ module.exports = {
       '2xl': '1536px',
       mobile: { max: '360px' },
       tablet: { max: '600px' },
+      notTablet: { min: '600px' },
       laptop: '1200px',
       desktop: '1536px'
     },
