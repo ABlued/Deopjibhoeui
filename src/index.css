@@ -20,6 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ededed;
+  min-width: 320px;
 }
 
 @media (max-width: 600px) {

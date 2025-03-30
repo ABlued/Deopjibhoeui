@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PCResultContainer from '../../modules/result/PCResultContainer';
-import MobileResultContainer from '../../modules/result/MobileResultContainer';
+import MobileResultContainer from '../../modules/result/mobile';
 
 function ResultPage() {
   const [isMobile, setIsMobile] = useState(false);
