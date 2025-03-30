@@ -1,17 +1,8 @@
-import React from 'react';
 import Table from '../../../components/Table';
-import { useFriendsNameStore } from '../../setTitle/hooks/useFriendsNameStore';
-import { useHistoryStore } from '../hooks/useHistory';
-import { calculateMinimumTransaction } from '../utils/calculateMinimumTransaction';
+import { useTransaction } from '../hooks/useTransaction';
 
 function SummaryTable() {
-  const { names } = useFriendsNameStore();
-  const { histories } = useHistoryStore();
-
-  const transaction = calculateMinimumTransaction({
-    expense: histories,
-    members: names
-  });
+  const { transaction } = useTransaction();
   return (
     <Table
       columns={[

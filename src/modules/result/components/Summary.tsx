@@ -2,10 +2,9 @@ import React from 'react';
 import { useFriendsNameStore } from '../../setTitle/hooks/useFriendsNameStore';
 import Stack from '../../../components/Div/Stack';
 import styled from 'styled-components';
-import { useHistoryStore } from '../hooks/useHistory';
 import NumberWithComma from '../../../components/Typography/NumberWithComma';
-import { calculateMountPerPerson } from '../utils/calculateMinimumTransaction';
 import SummaryTable from './SummaryTable';
+import { useCalculateHistory } from '../hooks/useCalculateHistory';
 const StyledSpan = styled('span')`
   font-weight: bold;
   color: #4880ee;
@@ -13,11 +12,7 @@ const StyledSpan = styled('span')`
 
 function Summary() {
   const { names } = useFriendsNameStore();
-  const { histories } = useHistoryStore();
-
-  const mountPerPerson = calculateMountPerPerson(histories, names);
-
-  const totalCost = histories.reduce((acc, cur) => acc + cur.cost, 0);
+  const { mountPerPerson, totalCost } = useCalculateHistory();
   return (
     <div>
       <div className="w-[100%] h-[110px] flex items-center justify-center">
