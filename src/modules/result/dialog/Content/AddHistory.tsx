@@ -8,6 +8,7 @@ import { useAddHistory } from '../../hooks/useAddHistory';
 import LocaleNumberInput from '../../../../components/Input/LocaleNumberInput';
 import Select from '../../../../components/Select/Select';
 import { useFriendsNameStore } from '../../../setTitle/hooks/useFriendsNameStore';
+import { cn } from '../../../../core/utils/classname/cn';
 
 function AddHistory({ dialogId }: HasDialogId) {
   const { form, cost, buyer, onChangeBuyer, isValid } = useAddHistory();
@@ -15,7 +16,12 @@ function AddHistory({ dialogId }: HasDialogId) {
 
   return (
     <div>
-      <div className="pt-[24px] pl-[24px] pr-[24px]">
+      <div
+        className={cn(
+          'pt-[24px] pl-[24px] pr-[24px]',
+          'tablet:pt-[0px] tablet:pl-[0px] tablet:pr-[0px]'
+        )}
+      >
         <p className="text-[24px] font-[700] mb-[42px]">비용을 입력하세요</p>
         <Stack>
           <Input

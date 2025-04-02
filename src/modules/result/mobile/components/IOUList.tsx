@@ -1,4 +1,3 @@
-import NumberWithComma from '../../../../components/Typography/NumberWithComma';
 import { useTransaction } from '../../hooks/useTransaction';
 import { ResultInfoGrayBox } from './InfoBox';
 

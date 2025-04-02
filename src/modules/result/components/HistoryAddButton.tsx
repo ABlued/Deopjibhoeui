@@ -1,16 +1,20 @@
 import Button, { ButtonProps } from '../../../components/Button/Button';
 import { cn } from '../../../core/utils/classname/cn';
 import { openDialog } from '../../../core/utils/dialog';
+import { BreakPoint } from '../../../types/style/breakPoint';
 import { ResultDialog } from '../dialog';
 import { VscAdd } from 'react-icons/vsc';
 
-function HistoryAddButton({ className }: { className?: string } & ButtonProps) {
+function HistoryAddButton({
+  className,
+  maxWidth
+}: { className?: string; maxWidth?: BreakPoint } & ButtonProps) {
   return (
     <Button
       text="내역 추가"
       size={'small'}
       onClick={() => {
-        openDialog(ResultDialog.addHistory());
+        openDialog(ResultDialog.addHistory({ maxWidth }));
       }}
       startIcon={() => (
         <VscAdd

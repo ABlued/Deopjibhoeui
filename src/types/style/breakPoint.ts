@@ -1,1 +1,1 @@
-export type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type BreakPoint = 'mobile' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';

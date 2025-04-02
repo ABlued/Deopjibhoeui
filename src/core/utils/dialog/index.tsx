@@ -25,6 +25,10 @@ export const closeDialog = (dialogId: string) => {
 type State = DialogState;
 
 const dialogWidth: Record<BreakPoint, React.CSSProperties> = {
+  mobile: {
+    width: 'calc(100vw - 32px)',
+    maxWidth: '420px'
+  },
   xs: {
     width: '450px',
     maxWidth: '450px'

@@ -1,5 +1,6 @@
 import { DialogState } from '../../../core/utils/types/dialog';
+import { BreakPoint } from '../../../types/style/breakPoint';
 
 export interface ResultDialogState {
-  addHistory: () => DialogState;
+  addHistory: (props: { maxWidth?: BreakPoint }) => DialogState;
 }
