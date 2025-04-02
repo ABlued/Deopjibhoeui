@@ -7,6 +7,7 @@ export const ResultDialog: ResultDialogState = {
     const dialogId = 'addHistory';
     return {
       content: () => <AddHistory dialogId={dialogId} />,
+      shouldCloseOnOverlayClick: false,
       dialogId,
       maxWidth: maxWidth ?? 'xs'
     };

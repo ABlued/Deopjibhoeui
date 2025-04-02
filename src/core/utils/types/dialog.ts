@@ -7,4 +7,5 @@ export interface HasDialogId {
 export interface DialogState extends HasDialogId {
   content: () => React.ReactNode;
   maxWidth?: BreakPoint;
+  shouldCloseOnOverlayClick?: boolean;
 }

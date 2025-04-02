@@ -11,8 +11,8 @@ function MobileResultContainer() {
         정산하기
       </p>
       <CalculateMember />
-      <HistoryAddButton fullWidth className="w-[100%]" maxWidth="mobile" />
       <CalculateResult />
+      <HistoryAddButton fullWidth className="w-[100%]" maxWidth="mobile" />
       <CalculateHistory />
     </div>
   );

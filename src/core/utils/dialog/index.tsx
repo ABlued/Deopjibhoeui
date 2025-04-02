@@ -87,6 +87,7 @@ const Dialog = () => {
             id={state.dialogId}
             key={idx}
             isOpen={true}
+            shouldCloseOnOverlayClick={state.shouldCloseOnOverlayClick ?? true}
             onRequestClose={(event) => {
               closeDialog(state.dialogId);
             }}
