@@ -1,15 +1,24 @@
 import { BreakPoint } from '../../../types/style/breakPoint';
-import AddHistory from './Content/AddHistory';
+import AddHistoryContent from './Content/AddHistoryContent';
 import { ResultDialogState } from './types';
 
-export const ResultDialog: ResultDialogState = {
+export const resultDialog: ResultDialogState = {
   addHistory: ({ maxWidth }: { maxWidth?: BreakPoint }) => {
     const dialogId = 'addHistory';
     return {
-      content: () => <AddHistory dialogId={dialogId} />,
+      content: () => <AddHistoryContent dialogId={dialogId} />,
       shouldCloseOnOverlayClick: false,
       dialogId,
       maxWidth: maxWidth ?? 'xs'
+    };
+  },
+  editHistory: (props) => {
+    const dialogId = 'editHistory';
+    return {
+      content: () => <AddHistoryContent dialogId={dialogId} />,
+      shouldCloseOnOverlayClick: false,
+      dialogId,
+      maxWidth: props.maxWidth ?? 'xs'
     };
   }
 };
