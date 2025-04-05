@@ -9,3 +9,9 @@ export type TargetName = {
     name?: string;
   };
 };
+
+export type TargetCheckEvent = {
+  target: {
+    checked: boolean;
+  };
+};
