@@ -44,4 +44,8 @@ body {
   .truncate-text {
     @apply overflow-hidden text-ellipsis whitespace-nowrap;
   }
+
+  .table-is-checked {
+    @apply bg-primary-lighter text-text-light;
+  }
 }

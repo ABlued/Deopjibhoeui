@@ -4,6 +4,7 @@ import EditTableCell from './EditTableCell';
 import TableCheckBox from './components/CheckBox';
 import { SelectionState } from '../../core/hooks/useTableSelection';
 import { Identifiable } from '../../types/common/identifiable';
+import clsx from 'clsx';
 
 function TableBody<T extends Identifiable<unknown>>({
   table,
@@ -17,6 +18,9 @@ function TableBody<T extends Identifiable<unknown>>({
     <tbody className="border-b-[1px solid lightgray]">
       {tableRow.rows.map((row, rowIndex) => {
         const cells = row.getVisibleCells();
+        const isChecked = !!selection?.selectedItem.find(
+          (s) => s.id === row.original.id
+        );
         return (
           <tr
             key={row.id}
@@ -28,6 +32,7 @@ function TableBody<T extends Identifiable<unknown>>({
                   <TableCheckBox
                     key={cell.id}
                     item={row.original}
+                    isChecked={isChecked}
                     selection={selection}
                   />
                 );
@@ -38,7 +43,8 @@ function TableBody<T extends Identifiable<unknown>>({
                   className={`px-6 py-4 border-[lightgray] border-b-[1px] text-center
                     ${cn(
                       index !== cells.length - 1 && 'border-r-[1px]',
-                      cell.column.columnDef.meta?.cellClassName
+                      cell.column.columnDef.meta?.cellClassName,
+                      clsx(isChecked && 'table-is-checked')
                     )}
                     `}
                 >
