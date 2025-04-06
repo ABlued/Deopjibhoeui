@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { ColumnDef } from '@tanstack/react-table';
-import Table from '..';
+import Table from '../Table';
 
 // Define the columns for the table
 const columns: ColumnDef<{ name: string; age: number }, any>[] = [

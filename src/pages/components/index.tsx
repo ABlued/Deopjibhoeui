@@ -4,7 +4,7 @@ import Card from '../../components/Card/Card';
 import Input from '../../components/Input/Input';
 import { useInput } from '../../core/hooks/useInput';
 import { titleValidator } from '../../core/utils/validator/titleValidator';
-import Table from '../../components/Table';
+import Table from '../../components/Table/Table';
 import { ColumnDef } from '@tanstack/react-table';
 
 interface Sample {

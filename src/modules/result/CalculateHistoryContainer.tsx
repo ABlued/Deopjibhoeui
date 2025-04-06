@@ -1,6 +1,6 @@
 import Title from './components/Title';
 import { useHistoryStore } from './hooks/useHistory';
-import Table from '../../components/Table';
+import Table from '../../components/Table/Table';
 import Stack from '../../components/Div/Stack';
 import { History } from './types/History';
 import Select from '../../components/Select/Select';

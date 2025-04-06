@@ -1,4 +1,4 @@
-import Table from '../../../components/Table';
+import Table from '../../../components/Table/Table';
 import { useTransaction } from '../hooks/useTransaction';
 
 function SummaryTable() {

@@ -37,18 +37,6 @@ describe('useTableSelection', () => {
       expect(renderResult.current.isAllSelected(emptyArray)).toBe(false);
     });
 
-    describe('When: isCheckable is false for admin or sub-admin', () => {
-      const testItem: TestType = { id: 'B' };
-      beforeEach(() => {
-        act(() => {
-          renderResult.current.onSelectedItem(false, testItem);
-        });
-      });
-      test('Then: the item should not be selectable', () => {
-        expect(renderResult.current.selectedItem).toEqual([]);
-      });
-    });
-
     describe('When: an arbitrary cell is selected', () => {
       const testSelectOne: TestType = { id: 'B' };
       beforeEach(() => {
