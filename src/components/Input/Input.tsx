@@ -57,7 +57,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <p
               className={twMerge(
                 'text-error-main text-xs mt-[4px] h-[1rem]',
-                error?.isError ? 'visible' : 'invisible',
+                !error?.isError && 'hidden',
                 errorMessageClassName
               )}
             >
