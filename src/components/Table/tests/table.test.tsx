@@ -2,25 +2,33 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { ColumnDef } from '@tanstack/react-table';
 import Table from '../Table';
+import { v4 as uuidv4 } from 'uuid';
+type Person = {
+  id: string;
+  name: string;
+  age: number;
+};
 
 // Define the columns for the table
-const columns: ColumnDef<{ name: string; age: number }, any>[] = [
+const columns: ColumnDef<Person, any>[] = [
   {
     accessorKey: 'name',
     header: 'Name',
-    cell: (info) => info.getValue()
+    cell: (info) => info.getValue(),
+    accessorFn: (row) => row.name
   },
   {
     accessorKey: 'age',
     header: 'Age',
-    cell: (info) => info.getValue()
+    cell: (info) => info.getValue(),
+    accessorFn: (row) => row.age
   }
 ];
 
 // Define the row data for the table
-const rowData = [
-  { name: 'John Doe', age: 28 },
-  { name: 'Jane Smith', age: 34 }
+const rowData: Person[] = [
+  { id: uuidv4(), name: 'John Doe', age: 28 },
+  { id: uuidv4(), name: 'Jane Smith', age: 34 }
 ];
 
 describe('Table Component', () => {

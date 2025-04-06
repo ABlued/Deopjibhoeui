@@ -6,7 +6,8 @@ export interface HasSelection<T> {
   hasSelection: (id: T) => boolean;
 }
 
-export interface SelectionState<T> extends HasSelection<T> {
+export interface SelectionState<T extends Identifiable<unknown>>
+  extends HasSelection<T> {
   isAllSelected: (items: T[]) => boolean;
   selectedItem: T[];
   onSelectedItems: (checkEvent: CheckEvent, items: T[]) => void;

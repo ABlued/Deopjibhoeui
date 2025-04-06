@@ -1,4 +1,5 @@
 export interface MinimumTransaction {
+  id: string;
   sender: string;
   receiver: string;
   amount: number;

@@ -4,6 +4,7 @@ import {
   SortedMembersToPay,
   TransactionDetail
 } from '../types/MinimumTransaction';
+import { v4 as uuidv4 } from 'uuid';
 
 export const calculateMinimumTransaction = ({
   expense,
@@ -94,6 +95,7 @@ const calculateTransaction = (sortedMembersToPay: SortedMembersToPay) => {
 
     if (amountToSend > amountToReceive) {
       minimumTransaction.push({
+        id: uuidv4(),
         sender: toSend.member,
         receiver: toReceive.member,
         amount: Number(amountToReceive.toFixed(2))
@@ -104,6 +106,7 @@ const calculateTransaction = (sortedMembersToPay: SortedMembersToPay) => {
       leftIndex++;
     } else {
       minimumTransaction.push({
+        id: uuidv4(),
         sender: toSend.member,
         receiver: toReceive.member,
         amount: Number(amountToSend.toFixed(2))

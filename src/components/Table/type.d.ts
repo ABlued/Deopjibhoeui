@@ -1,6 +1,8 @@
 import '@tanstack/react-table';
 import { ValidationResult } from '../../core/utils/types/validate';
 
+export type TableRowType = 'common' | 'checkbox';
+
 declare module '@tanstack/table-core' {
   interface ColumnMeta<TData extends RowData, TValue, TransValue = unknown> {
     headerClassName?: string;
@@ -12,6 +14,7 @@ declare module '@tanstack/table-core' {
     canEdit?: boolean;
     validate?: (value: TValue) => ValidationResult;
     transform?: (value: TValue) => TransValue;
+    type?: TableRowType;
   }
 }
 

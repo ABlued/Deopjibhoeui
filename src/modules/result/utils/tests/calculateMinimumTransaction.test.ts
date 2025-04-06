@@ -22,8 +22,13 @@ describe('calculateMinimumTransaction', () => {
       ],
       members: ['Alice', 'Bob', 'Charlie']
     });
-    expect(result).toEqual([
-      { sender: 'Charlie', receiver: 'Alice', amount: 20 }
+    expect(result).toMatchObject([
+      {
+        sender: 'Charlie',
+        receiver: 'Alice',
+        amount: 20,
+        id: expect.any(String)
+      }
     ]);
   });
 
@@ -44,9 +49,14 @@ describe('calculateMinimumTransaction', () => {
       ],
       members: ['Alice', 'Bob', 'Charlie']
     });
-    expect(result).toEqual([
-      { sender: 'Charlie', receiver: 'Alice', amount: 13 },
-      { sender: 'Bob', receiver: 'Alice', amount: 13 }
+    expect(result).toMatchObject([
+      {
+        sender: 'Charlie',
+        receiver: 'Alice',
+        amount: 13,
+        id: expect.any(String)
+      },
+      { sender: 'Bob', receiver: 'Alice', amount: 13, id: expect.any(String) }
     ]);
   });
 
@@ -86,8 +96,8 @@ describe('calculateMinimumTransaction', () => {
       ],
       members: ['Alice', 'Bob', 'Charlie']
     });
-    expect(result).toEqual([
-      { sender: 'Charlie', receiver: 'Bob', amount: 20 }
+    expect(result).toMatchObject([
+      { sender: 'Charlie', receiver: 'Bob', amount: 20, id: expect.any(String) }
     ]);
   });
 

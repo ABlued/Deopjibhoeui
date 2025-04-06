@@ -9,16 +9,28 @@ import LocaleNumberInput from '../../components/Input/LocaleNumberInput';
 import Input from '../../components/Input/Input';
 import { emptyValidator } from '../../core/utils/validator/emptyValidator';
 import { formatPurchaseDate } from './utils/formatPurchaseDate';
+import { useTableSelection } from '../../core/hooks/useTableSelection';
 
 function CalculateHistory() {
   const { histories, setHistoriesByKey } = useHistoryStore();
   const { names } = useFriendsNameStore();
+  const tableSelection = useTableSelection({ items: histories });
+  console.log('### selectedItem', tableSelection.selectedItem);
 
   return (
     <Stack className="gap-[52px]">
       <Title title="정산 내역" />
       <Table
+        selection={tableSelection}
         columns={[
+          {
+            id: 'checkbox',
+            header: '',
+            accessorFn: (row) => row.id,
+            meta: {
+              type: 'checkbox'
+            }
+          },
           {
             id: 'purchaseDate',
             header: '날짜',
