@@ -6,7 +6,6 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { TableBody, TableFooter, TableHeader } from '.';
-import { isEqual } from '../../core/utils/object/isEqual';
 import { SelectionState } from '../../core/hooks/useTableSelection';
 import { Identifiable } from '../../types/common/identifiable';
 
@@ -21,20 +20,12 @@ function Table<T extends Identifiable<unknown>>({
   tableOptions?: Partial<TableOptions<T>>;
   selection?: SelectionState<T>;
 }) {
-  const [data, _setData] = React.useState(() => [...rowData]);
-
   const table = useReactTable({
-    data,
+    data: rowData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     ...tableOptions
   });
-
-  React.useEffect(() => {
-    if (isEqual(rowData, data) === false) {
-      _setData(rowData);
-    }
-  }, [rowData]);
 
   return (
     <div className="relative overflow-x-auto">
