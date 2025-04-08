@@ -20,9 +20,8 @@ flex items-center justify-center gap-2 text-white bg-primary-main hover:bg-prima
   {
     variants: {
       variant: {
-        default: 'shadow-none active:scale-100',
-        grey: 'bg-slate-buttongrey ',
-        blue: 'bg-accent-blue'
+        default: 'shadow-none active:scale-100 hover:bg-primary-light',
+        error: 'bg-error-main hover:bg-red-400 shadow-none active:scale-100'
       },
       size: {
         icon: 'h-9 w-9',

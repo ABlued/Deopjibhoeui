@@ -9,6 +9,7 @@ export interface ResultDialogState {
   editHistory: (
     props: { maxWidth?: BreakPoint } & Partial<History>
   ) => DialogState;
+  deleteAllHistory: (onDeleteAll: () => void) => DialogState;
 }
 export type HistoryFormProps = {
   form: UseFormResult<{

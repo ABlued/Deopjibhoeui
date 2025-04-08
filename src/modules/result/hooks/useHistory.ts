@@ -9,6 +9,9 @@ type HistoryStore = {
     value: History[K]
   ) => void;
   pushHistories: (histories: History) => void;
+  deleteHistoryByIndex: (index: number) => void;
+  deleteHistoriesByID: (id: string) => void;
+  deleteAll: () => void;
 };
 
 export const useHistoryStore = create<HistoryStore>((set) => ({
@@ -31,5 +34,17 @@ export const useHistoryStore = create<HistoryStore>((set) => ({
       return {
         histories: newHistories
       };
-    })
+    }),
+  deleteHistoryByIndex: (index: number) =>
+    set((store) => ({
+      histories: store.histories.filter((_, i) => i !== index)
+    })),
+  deleteHistoriesByID: (id: string) =>
+    set((store) => ({
+      histories: store.histories.filter((history) => history.id !== id)
+    })),
+  deleteAll: () =>
+    set(() => ({
+      histories: []
+    }))
 }));

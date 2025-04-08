@@ -31,7 +31,9 @@ module.exports = {
         gray2: '#CDCDCD'
       },
       error: {
-        main: '#FF1A43'
+        main: '#FF1A43',
+        light: '#FF1A43',
+        lighter: '#FF1A43'
       },
       column: {
         main: '#F1F6F7'
