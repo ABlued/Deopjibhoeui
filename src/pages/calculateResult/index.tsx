@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PCResultContainer from '../../modules/result/PCResultContainer';
 import MobileResultContainer from '../../modules/result/mobile';
+import { useCheckMobile } from '../../core/hooks/useCheckMobile';
 
 function ResultPage() {
-  const [isMobile, setIsMobile] = useState(false);
-  const MOBILE_WIDTH = 600;
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth <= MOBILE_WIDTH);
-    };
-
-    checkIsMobile();
-
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
+  const { isMobile } = useCheckMobile();
 
   return (
     <div className="flex items-center justify-center">

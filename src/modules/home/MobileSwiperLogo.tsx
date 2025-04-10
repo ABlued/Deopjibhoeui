@@ -11,6 +11,7 @@ import MoneyFeeling from '../../assets/svg/MoneyFeeling.svg?react';
 import SmileGirl from '../../assets/svg/SmileGirl.svg?react';
 import SurprisingBoy from '../../assets/svg/SurprisingBoy.svg?react';
 import styled from 'styled-components';
+import { useCheckMobile } from '../../core/hooks/useCheckMobile';
 
 const StyledSwiper = styled(Swiper)`
   .swiper {
@@ -35,6 +36,10 @@ const StyledSwiper = styled(Swiper)`
 `;
 
 function MobileSwiperLogo() {
+  const { isMobile } = useCheckMobile();
+
+  if (!isMobile) return null;
+
   return (
     <div className="tablet:visible notTablet:hidden w-[121px]">
       <StyledSwiper
