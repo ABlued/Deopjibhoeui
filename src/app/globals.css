@@ -1,0 +1,73 @@
+@import url('https://static.toss.im/tps/main.css');
+@import url('https://static.toss.im/tps/others.css');
+@import 'tailwindcss';
+
+* {
+  font-family: 'Toss Product Sans', Roboto, Inter, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ededed;
+  min-width: 320px;
+}
+
+@theme {
+  --breakpoint-tablet: 600px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-mobile: 360px
+
+  --breakpoint-tablet: 600px;
+
+  --breakpoint-laptop: 1200px;
+  --breakpoint-desktop: 1536px;
+
+  --color-primary-dark: #1F4EF5;
+  --color-primary-main: #4880EE;
+  --color-primary-light: #83B4F9;
+  --color-primary-lighter: #ECF3FE;
+  --color-primary-gray: #C2D0E5;
+  --color-border-gray: #D9D9D9;
+  --color-border-gray2: #CDCDCD;
+  --color-error-main: #FF1A43;
+  --color-error-light: #FF1A43;
+  --color-error-lighter: #FF1A43;
+  --color-column-main: #F1F6F7;
+  --color-text-main: #1A1E27;
+  --color-text-light: #505866;
+  --color-text-lighter: #B1B8C0;
+  --color-table-column: #F1F6F7;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-color: #ffffff;
+  }
+}
+
+@layer components {
+  .table-header-title {
+    @apply text-[24px] font-[700] text-text-light;
+  }
+
+  .clickable {
+    @apply cursor-pointer flex justify-center items-center p-[6px] rounded-lg hover:bg-[#f5f5f5];
+  }
+  .tablet-card {
+    @apply tablet:!rounded-none tablet:!shadow-none tablet:!bg-transparent;
+  }
+  .truncate-text {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .table-is-checked {
+    @apply bg-primary-lighter text-text-light;
+  }
+}
