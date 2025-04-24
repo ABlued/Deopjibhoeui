@@ -7,3 +7,5 @@ vitest.workspace.js
 /node_modules
 /dist
 /public
+/.next
+/src/mocks/svgMock.js

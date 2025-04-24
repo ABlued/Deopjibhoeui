@@ -43,4 +43,3 @@ function CalculateHistoryTableManagement({
 }
 
 export default CalculateHistoryTableManagement;
-3;
