@@ -16,7 +16,7 @@ function HistoryForm(props: HasDialogId & HistoryFormProps) {
       <div
         className={cn(
           'pt-[24px] pl-[24px] pr-[24px]',
-          'tablet:pt-[0px] tablet:pl-[0px] tablet:pr-[0px]'
+          'tablet!:pt-[0px] tablet!:pl-[0px] tablet!:pr-[0px]'
         )}
       >
         <p className="text-[24px] font-[700] mb-[42px]">비용을 입력하세요</p>

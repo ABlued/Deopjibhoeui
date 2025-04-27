@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import PCResultContainer from '../../modules/result/PCResultContainer';
 import MobileResultContainer from '../../modules/result/mobile';

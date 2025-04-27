@@ -7,9 +7,9 @@ import {
   WINDOW_OPEN_POPUP_EVENT,
   WindowActionEvent
 } from '../types/setWindowEvent';
-import { useNavigation } from 'react-router';
 import ReactModal from 'react-modal';
 import { BreakPoint } from '../../../types/style/breakPoint';
+import { useRouter } from 'next/router';
 
 export const openDialog = (state: DialogState) => {
   sendWindowEvent<WindowActionEvent, DialogState>('window_open_popup', {
@@ -56,12 +56,12 @@ const getDialogWidth = (maxWidth?: BreakPoint) => {
 };
 
 const Dialog = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [dialogs, setDialogs] = useState<State[]>([]);
 
   useLayoutEffect(() => {
     setDialogs([]);
-  }, [navigation.location?.pathname]);
+  }, [router.pathname]);
 
   useWindowEvent(WINDOW_OPEN_POPUP_EVENT, (state: State) => {
     setDialogs((prevAlerts) => [...prevAlerts, state]);

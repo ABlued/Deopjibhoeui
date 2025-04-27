@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import { useInput } from '../../../core/hooks/useInput';
 import { useTagInput } from '../../../core/hooks/useTagInput';
 import { titleValidator } from '../../../core/utils/validator/titleValidator';
@@ -6,6 +5,7 @@ import { useFriendsNameStore } from './useFriendsNameStore';
 import { useTitleStore } from './useTitleStore';
 import { routePath } from '../../router/routePath';
 import { UseSetTitleForm } from '../types/useSetTitleForm';
+import { useRouter } from 'next/navigation';
 
 export const useSetTitleForm = (): UseSetTitleForm => {
   const title = useInput({
@@ -15,12 +15,12 @@ export const useSetTitleForm = (): UseSetTitleForm => {
   const tagInput = useTagInput();
   const setTitle = useTitleStore((state) => state.setTitle);
   const setNames = useFriendsNameStore((state) => state.setNames);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const submit = () => {
     setTitle(title.value);
     setNames(tagInput.tags);
-    navigate(routePath.result);
+    router.push(routePath.result);
   };
 
   const disabled =

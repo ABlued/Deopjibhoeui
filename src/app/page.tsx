@@ -15,12 +15,12 @@ function HomePage() {
       <Image
         src={HomeLeftBackground}
         alt="background"
-        className="w-[30%] max-w-[30%] min-w-[200px] h-[100vh] absolute z-[-1] left-[-40px] hidden notTablet:inline"
+        className="w-[30%] max-w-[30%] min-w-[200px] h-[100vh] absolute z-[-1] left-[-40px] hidden tablet:inline"
       />
       <Image
         src={HomeRightBackground}
         alt="background"
-        className="w-[30%] max-w-[30%] min-w-[200px] h-[100vh] absolute z-[-1] right-[-40px] hidden notTablet:inline"
+        className="w-[30%] max-w-[30%] min-w-[200px] h-[100vh] absolute z-[-1] right-[-40px] hidden tablet:inline"
       />
 
       <div className="flex flex-col items-center justify-center gap-[38px] w-[100vw] h-[100vh] text-center whitespace-pre">

@@ -6,12 +6,13 @@ import 'swiper/css/pagination';
 
 import { EffectCube, Autoplay } from 'swiper/modules';
 
-import Calculator from '../../assets/svg/Calculator.svg?react';
-import MoneyFeeling from '../../assets/svg/MoneyFeeling.svg?react';
-import SmileGirl from '../../assets/svg/SmileGirl.svg?react';
-import SurprisingBoy from '../../assets/svg/SurprisingBoy.svg?react';
+import Calculator from '../../assets/svg/Calculator.svg';
+import MoneyFeeling from '../../assets/svg/MoneyFeeling.svg';
+import SmileGirl from '../../assets/svg/SmileGirl.svg';
+import SurprisingBoy from '../../assets/svg/SurprisingBoy.svg';
 import styled from 'styled-components';
 import { useCheckMobile } from '../../core/hooks/useCheckMobile';
+import Image from 'next/image';
 
 const StyledSwiper = styled(Swiper)`
   .swiper {
@@ -41,7 +42,7 @@ function MobileSwiperLogo() {
   if (!isMobile) return null;
 
   return (
-    <div className="tablet:visible notTablet:hidden w-[121px]">
+    <div className="tablet!:visible nottablet!:hidden w-[121px]">
       <StyledSwiper
         effect={'cube'}
         grabCursor={false}
@@ -57,16 +58,16 @@ function MobileSwiperLogo() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Calculator />
+          <Image src={Calculator} alt={''} />
         </SwiperSlide>
         <SwiperSlide>
-          <SmileGirl />
+          <Image src={SmileGirl} alt={''} />
         </SwiperSlide>
         <SwiperSlide>
-          <MoneyFeeling />
+          <Image src={MoneyFeeling} alt={''} />
         </SwiperSlide>
         <SwiperSlide>
-          <SurprisingBoy />
+          <Image src={SurprisingBoy} alt={''} />
         </SwiperSlide>
       </StyledSwiper>
     </div>
