@@ -3,7 +3,7 @@ import { cn } from '../../core/utils/classname/cn';
 
 function TableHeader<T>({ tableHeader }: { tableHeader: HeaderGroup<T>[] }) {
   return (
-    <thead className="table-header-title uppercase bg-table-column dark:bg-gray-700 dark:text-gray-400">
+    <thead className="table-header-title uppercase bg-table-column dark:text-gray-400">
       {tableHeader.map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header, index) => {

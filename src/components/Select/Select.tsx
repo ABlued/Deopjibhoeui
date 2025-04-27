@@ -28,13 +28,9 @@ function Select({ items, selected, onChange, placeholder, className }: Props) {
           onChange={(e) => {
             onChange?.(e.currentTarget.value);
           }}
-          defaultValue={selected ?? ''}
+          defaultValue={''}
         >
-          {placeholder && (
-            <option selected value={''}>
-              {placeholder}
-            </option>
-          )}
+          {placeholder && <option value={''}>{placeholder}</option>}
           {items.sort().map((item) => {
             return (
               <option

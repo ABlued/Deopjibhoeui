@@ -3,13 +3,11 @@ import { useForm } from '../../../core/hooks/useForm';
 import { useInput } from '../../../core/hooks/useInput';
 import { useHistoryStore } from './useHistory';
 import { v4 as uuidv4 } from 'uuid';
-import { useFriendsNameStore } from '../../setTitle/hooks/useFriendsNameStore';
 
 export const useAddHistory = () => {
   const { pushHistories: set } = useHistoryStore();
-  const { names } = useFriendsNameStore();
   const cost = useInput({ text: '' });
-  const [buyer, setBuyer] = useState(names[0]);
+  const [buyer, setBuyer] = useState('');
 
   const onChangeBuyer = (value: string) => {
     setBuyer(value);

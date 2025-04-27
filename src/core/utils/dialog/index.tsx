@@ -1,4 +1,5 @@
-import { useCallback, useLayoutEffect, useState } from 'react';
+'use client';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import useWindowEvent from '../../hooks/useWindowEvent';
 import { sendWindowEvent } from '../event/setWindowEvent';
 import { DialogState, HasDialogId } from '../types/dialog';
@@ -9,7 +10,7 @@ import {
 } from '../types/setWindowEvent';
 import ReactModal from 'react-modal';
 import { BreakPoint } from '../../../types/style/breakPoint';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const openDialog = (state: DialogState) => {
   sendWindowEvent<WindowActionEvent, DialogState>('window_open_popup', {
@@ -56,12 +57,11 @@ const getDialogWidth = (maxWidth?: BreakPoint) => {
 };
 
 const Dialog = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const [dialogs, setDialogs] = useState<State[]>([]);
-
   useLayoutEffect(() => {
     setDialogs([]);
-  }, [router.pathname]);
+  }, [pathname]);
 
   useWindowEvent(WINDOW_OPEN_POPUP_EVENT, (state: State) => {
     setDialogs((prevAlerts) => [...prevAlerts, state]);
@@ -84,6 +84,7 @@ const Dialog = () => {
       {dialogs.map((state, idx) => {
         return (
           <ReactModal
+            appElement={document.body}
             id={state.dialogId}
             key={idx}
             isOpen={true}

@@ -22,10 +22,7 @@ function TableBody<T extends Identifiable<unknown>>({
           (s) => s.id === row.original.id
         );
         return (
-          <tr
-            key={row.id}
-            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-          >
+          <tr key={row.id} className="bg-white border-b  dark:border-gray-700">
             {cells.map((cell, index) => {
               if (cell.column.columnDef.meta?.type === 'checkbox') {
                 return (
