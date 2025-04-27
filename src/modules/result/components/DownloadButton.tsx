@@ -12,7 +12,7 @@ function ResultDownloadButton() {
   const downloadResult = async () => {
     setIsLoading(true);
 
-    const root = document.getElementById('root') as HTMLElement;
+    const pageContainer = document.getElementById('resultPage') as HTMLElement;
     const filter = (node: HTMLElement) => {
       const exclusionClasses = [DOWNLOAD_BUTTON_AREA_DOM_CLASSNAME];
       return !exclusionClasses.some((classname) => {
@@ -21,7 +21,9 @@ function ResultDownloadButton() {
     };
 
     try {
-      const dataUrl = await htmlToImage.toPng(root, { filter: filter });
+      const dataUrl = await htmlToImage.toPng(pageContainer, {
+        filter: filter
+      });
       download(dataUrl, `${title}_정산결과.png`);
     } catch (error) {
       console.error('이미지 생성 실패:', error);

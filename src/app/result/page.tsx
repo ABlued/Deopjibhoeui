@@ -8,7 +8,7 @@ function ResultPage() {
   const { isMobile } = useCheckMobile();
 
   return (
-    <div className="flex items-center justify-center">
+    <div id="resultPage" className="flex items-center justify-center">
       {isMobile ? <MobileResultContainer /> : <PCResultContainer />}
     </div>
   );
