@@ -1,12 +1,16 @@
 import React from 'react';
 import { HasDialogId } from '../../../../core/utils/types/dialog';
-import { useAddHistory } from '../../hooks/useAddHistory';
 import HistoryForm from '../components/HistoryForm';
 import Button from '../../../../components/Button/Button';
 import { closeDialog } from '../../../../core/utils/dialog';
+import { useEditHistory } from '../../hooks/useEditHistory';
+import { History } from '../../types/History';
 
-function AddHistoryContent({ dialogId }: HasDialogId) {
-  const { form, cost, buyer, onChangeBuyer, isValid } = useAddHistory();
+function EditHistoryContent({
+  dialogId,
+  history
+}: HasDialogId & { history: History }) {
+  const { form, cost, buyer, onChangeBuyer, isValid } = useEditHistory(history);
 
   return (
     <>
@@ -20,7 +24,7 @@ function AddHistoryContent({ dialogId }: HasDialogId) {
       />
       <div className="flex justify-end gap-2 mt-[46px]">
         <Button
-          text="추가"
+          text="수정"
           disabled={!isValid()}
           onClick={(e) => {
             form.onSubmit(e);
@@ -38,4 +42,4 @@ function AddHistoryContent({ dialogId }: HasDialogId) {
   );
 }
 
-export default AddHistoryContent;
+export default EditHistoryContent;

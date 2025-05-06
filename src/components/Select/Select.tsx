@@ -28,16 +28,12 @@ function Select({ items, selected, onChange, placeholder, className }: Props) {
           onChange={(e) => {
             onChange?.(e.currentTarget.value);
           }}
-          defaultValue={''}
+          defaultValue={selected ?? ''}
         >
           {placeholder && <option value={''}>{placeholder}</option>}
           {items.sort().map((item) => {
             return (
-              <option
-                key={item.value}
-                value={item.value}
-                selected={selected === item.value}
-              >
+              <option key={item.value} value={item.value}>
                 {item.label}
               </option>
             );

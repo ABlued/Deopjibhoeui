@@ -6,9 +6,10 @@ import { History } from '../types/History';
 
 export interface ResultDialogState {
   addHistory: (props: { maxWidth?: BreakPoint }) => DialogState;
-  editHistory: (
-    props: { maxWidth?: BreakPoint } & Partial<History>
-  ) => DialogState;
+  editHistory: (props: {
+    maxWidth?: BreakPoint;
+    history: History;
+  }) => DialogState;
   deleteAllHistory: (onDeleteAll: () => void) => DialogState;
 }
 export type HistoryFormProps = {

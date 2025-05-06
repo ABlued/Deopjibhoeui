@@ -15,7 +15,7 @@ function HistoryItem({ history }: { history: History }) {
     <>
       <ResultInfoBlueBox className="flex flex-col items-center">
         <div className="self-end inline">
-          <HistoryManagement />
+          <HistoryManagement history={history} />
         </div>
         <div className="w-fit">
           <StyledP className="truncate-text">

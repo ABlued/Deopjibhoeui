@@ -1,6 +1,7 @@
 import { BreakPoint } from '../../../types/style/breakPoint';
 import AddHistoryContent from './Content/AddHistoryContent';
 import DeleteAllHistoryContent from './Content/deleteAllHistoryContent';
+import EditHistoryContent from './Content/EditHistoryContent';
 import { ResultDialogState } from './types';
 
 export const resultDialog: ResultDialogState = {
@@ -16,7 +17,9 @@ export const resultDialog: ResultDialogState = {
   editHistory: (props) => {
     const dialogId = 'editHistory';
     return {
-      content: () => <AddHistoryContent dialogId={dialogId} />,
+      content: () => (
+        <EditHistoryContent dialogId={dialogId} history={props.history} />
+      ),
       shouldCloseOnOverlayClick: false,
       dialogId,
       maxWidth: props.maxWidth ?? 'xs'
