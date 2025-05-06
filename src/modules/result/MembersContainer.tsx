@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '../../components/Div/Divder';
+import Divider from '../../components/Div/Divider';
 import { useFriendsNameStore } from '../setTitle/hooks/useFriendsNameStore';
 import Label from '../../components/Div/Label';
 

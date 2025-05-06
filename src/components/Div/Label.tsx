@@ -12,7 +12,7 @@ export interface LabelProps {
 
 function Label({ tag, id, onDelete, divClassName, iconProps }: LabelProps) {
   return (
-    <li
+    <span
       className={cn(
         'text-lg p-2.5 m-1 cursor-default bg-primary-lighter text-primary-dark rounded-full flex justify-evenly items-center min-w-[70px]',
         divClassName
@@ -30,7 +30,7 @@ function Label({ tag, id, onDelete, divClassName, iconProps }: LabelProps) {
           <VscClose {...iconProps} />
         </span>
       )}
-    </li>
+    </span>
   );
 }
 
