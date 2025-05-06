@@ -1,3 +1,4 @@
+'use client';
 import { UseInput, UseInputParams } from './types/useInput';
 import { useInputBase } from './useInputBase';
 

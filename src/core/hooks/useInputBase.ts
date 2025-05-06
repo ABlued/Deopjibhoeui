@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { TargetValue } from '../../types/common/targetValue';
 import { FunctionValidation } from '../utils/types/validate';

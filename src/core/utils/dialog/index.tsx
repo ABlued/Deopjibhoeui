@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import useWindowEvent from '../../hooks/useWindowEvent';
 import { sendWindowEvent } from '../event/setWindowEvent';
 import { DialogState, HasDialogId } from '../types/dialog';
@@ -10,7 +10,7 @@ import {
 } from '../types/setWindowEvent';
 import ReactModal from 'react-modal';
 import { BreakPoint } from '../../../types/style/breakPoint';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export const openDialog = (state: DialogState) => {
   sendWindowEvent<WindowActionEvent, DialogState>('window_open_popup', {
