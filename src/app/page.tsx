@@ -2,7 +2,7 @@
 
 import React from 'react';
 import HomeRightBackground from '../assets/images/HomeRightBackground.png';
-import HomeLeftBackground from '../assets/images/homeLeftBackground.png';
+import HomeLeftBackground from '../assets/images/HomeLeftBackground.png';
 import MobileSwiperLogo from '../modules/home/MobileSwiperLogo';
 import Button from '../components/Button/Button';
 import { routePath } from '../modules/router/routePath';
