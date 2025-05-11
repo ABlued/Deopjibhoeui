@@ -6,12 +6,19 @@ export const formatPurchaseDate = (purchaseDate: string): string => {
     : '설정하지 않음';
 };
 
-export const formatPurchaseDay = (purchaseDate: string): string => {
+export const formatPurchaseDay = ({
+  purchaseDate,
+  params
+}: {
+  purchaseDate: string;
+  params?: Intl.DateTimeFormatOptions;
+}): string => {
   return !isNotDate(purchaseDate)
     ? new Date(purchaseDate).toLocaleString('ko-KR', {
         day: '2-digit',
         month: '2-digit',
-        year: 'numeric'
+        year: 'numeric',
+        ...params
       })
     : '설정하지 않음';
 };

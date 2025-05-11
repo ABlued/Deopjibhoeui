@@ -19,7 +19,14 @@ function HistoryItem({ history }: { history: History }) {
         </div>
         <div className="w-fit">
           <StyledP className="truncate-text">
-            📅 {formatPurchaseDay(history.purchaseDate)}
+            📅{' '}
+            {formatPurchaseDay({
+              purchaseDate: history.purchaseDate,
+              params: {
+                hour: '2-digit',
+                minute: '2-digit'
+              }
+            })}
           </StyledP>
           <StyledP className="truncate-text">
             💳 {history.purchaseHistory}
