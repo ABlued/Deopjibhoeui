@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../../core/utils/classname/cn';
+import { v4 as uuid } from 'uuid';
 
 type Item = {
   value: string;
@@ -42,7 +43,7 @@ function Select({
           {placeholder && <option value={''}>{placeholder}</option>}
           {items.sort().map((item) => {
             return (
-              <option key={item.value} value={item.value}>
+              <option key={uuid()} value={item.value}>
                 {item.label}
               </option>
             );

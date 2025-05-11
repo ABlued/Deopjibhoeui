@@ -1,6 +1,7 @@
 import { useFriendsNameStore } from '../../setTitle/hooks/useFriendsNameStore';
 import { ResultSectionBox } from './components/InfoBox';
 import { SectionTitle } from './components/SectionTitle';
+import { v4 as uuid } from 'uuid';
 
 function CalculateMember() {
   const { names } = useFriendsNameStore();
@@ -11,7 +12,7 @@ function CalculateMember() {
       <ul className="mt-[6px] ml-[1.2rem]">
         {names.map((name) => (
           <li
-            key={name}
+            key={uuid()}
             className="list-disc truncate-text text-[1rem] font-bold"
           >
             {`👤 ${name}`}
