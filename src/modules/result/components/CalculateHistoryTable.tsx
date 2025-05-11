@@ -71,7 +71,7 @@ function CalculateHistoryTable({
             editComponent: ({ value, setValue }) => {
               return (
                 <Select
-                  className="w-[100%]"
+                  fullWidth
                   items={names.map((name) => ({ value: name, label: name }))}
                   selected={value}
                   onChange={setValue}

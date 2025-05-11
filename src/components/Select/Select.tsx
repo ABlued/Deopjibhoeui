@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../../core/utils/classname/cn';
 
 type Item = {
   value: string;
@@ -11,12 +12,20 @@ interface Props {
   selected?: string;
   onChange?: (value: string) => void;
   className?: string;
+  fullWidth?: boolean;
 }
 
-function Select({ items, selected, onChange, placeholder, className }: Props) {
+function Select({
+  items,
+  selected,
+  onChange,
+  placeholder,
+  className,
+  fullWidth
+}: Props) {
   return (
-    <div className={className}>
-      <form className="max-w-sm mx-auto">
+    <div className={cn(className, fullWidth && 'w-[100%]')}>
+      <form className={cn('max-w-sm mx-auto', fullWidth && 'w-[100%]')}>
         {placeholder && (
           <label htmlFor="underline_select" className="sr-only">
             {placeholder}
@@ -24,7 +33,7 @@ function Select({ items, selected, onChange, placeholder, className }: Props) {
         )}
         <select
           id="underline_select"
-          className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          className={cn('input-style', fullWidth && 'w-[100%]')}
           onChange={(e) => {
             onChange?.(e.currentTarget.value);
           }}

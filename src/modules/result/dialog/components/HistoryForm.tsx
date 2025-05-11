@@ -41,8 +41,10 @@ function HistoryForm(props: HasDialogId & HistoryFormProps) {
         <Select
           items={names.map((name) => ({ value: name, label: name }))}
           placeholder="누가 결제했나요?"
+          className="text-border-gray"
           selected={props.buyer}
           onChange={props.onChangeBuyer}
+          fullWidth
         />
         <LocaleNumberInput
           fullWidth
