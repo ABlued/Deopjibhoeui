@@ -8,8 +8,7 @@ const InputBase = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={'text'}
         className={twMerge(
-          'pl-[0] indent-0 border-0 p-[10px 0] border-b-[1px] border-border-gray focus:border-primary-dark focus:ring-0 placeholder:text-border-gray',
-          'focus:outline-none',
+          'input-style',
           props.error?.isError && 'border-error-main focus:border-error-main',
           props.fullWidth && 'w-full',
           props.className
