@@ -34,13 +34,22 @@ function Select({
         )}
         <select
           id="underline_select"
-          className={cn('input-style', fullWidth && 'w-[100%]')}
+          className={cn(
+            'input-style',
+            fullWidth && 'w-[100%]',
+            selected && 'text-black'
+          )}
           onChange={(e) => {
             onChange?.(e.currentTarget.value);
           }}
           defaultValue={selected ?? ''}
+          value={selected}
         >
-          {placeholder && <option value={''}>{placeholder}</option>}
+          {placeholder && (
+            <option className="text-border-gray" value={''}>
+              {placeholder}
+            </option>
+          )}
           {items.sort().map((item) => {
             return (
               <option key={uuid()} value={item.value}>
