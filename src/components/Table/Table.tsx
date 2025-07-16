@@ -29,7 +29,7 @@ function Table<T extends Identifiable<unknown>>({
 
   return (
     <div className="relative overflow-x-auto">
-      <table className="w-full border-[1px solid lightgray] text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table className="w-full border-[1px solid lightgray] text-left rtl:text-right  ">
         <TableHeader tableHeader={table.getHeaderGroups()} />
         <TableBody table={table} selection={selection} />
         <TableFooter tableFooter={table.getFooterGroups()} />
