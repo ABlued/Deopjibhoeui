@@ -3,8 +3,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { cn } from '../../core/utils/classname/cn';
 import { VscLoading } from 'react-icons/vsc';
 export interface ButtonProps
-  extends
-    ButtonHTMLAttributes<HTMLButtonElement>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   text?: string;
   isLoading?: boolean;
@@ -68,7 +67,13 @@ function Button({
       <button
         type="button"
         className={cn(
-          ButtonVariants({ variant, size, disabled, fullWidth, isLoading }),
+          ButtonVariants({
+            variant,
+            size,
+            disabled,
+            fullWidth,
+            isLoading
+          }),
           className
         )}
         onClick={onClick}
