@@ -196,7 +196,6 @@ app.put(path, async function (req, res) {
 
 app.post(path, async function (req, res) {
   const { groupName } = req.body;
-  console.log('### req', req);
 
   if (!groupName || groupName.trim().length === 0) {
     res.statusCode = 400;
