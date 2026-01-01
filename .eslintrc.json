@@ -16,7 +16,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "react", "react-hooks", "jest"],
+  "plugins": ["prettier", "@typescript-eslint", "react", "jest"],
   "rules": {
     "react/self-closing-comp": "error",
     "@typescript-eslint/no-floating-promises": "error",

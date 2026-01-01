@@ -3,7 +3,8 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { cn } from '../../core/utils/classname/cn';
 import { VscLoading } from 'react-icons/vsc';
 export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   text?: string;
   isLoading?: boolean;
