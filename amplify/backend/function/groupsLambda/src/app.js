@@ -13,7 +13,8 @@ const {
   GetCommand,
   PutCommand,
   QueryCommand,
-  ScanCommand
+  ScanCommand,
+  UpdateCommand
 } = require('@aws-sdk/lib-dynamodb');
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
 const bodyParser = require('body-parser');
@@ -173,17 +174,34 @@ app.get(
 );
 
 /************************************
- * HTTP put method for insert object *
+ * HTTP put method for adding members to the group - 멤버 추가 API *
  *************************************/
+// /groups/:guid/members
+app.put(`${path}${hashKeyPath}/members`, async function (req, res) {
+  const guid = req.params[partitionKeyName];
+  const { members } = req.body;
 
-app.put(path, async function (req, res) {
-  let putItemParams = {
+  if (!members || !Array.isArray(members) || members.length === 0) {
+    res.statusCode = 400;
+    res.json({ error: 'invalid members' });
+    return;
+  }
+
+  let updateItemParams = {
     TableName: tableName,
-    Item: req.body
+    Key: {
+      [partitionKeyName]: guid
+    },
+    UpdateExpression: 'SET members = :members',
+    ExpressionAttributeValues: {
+      ':members': members
+    }
   };
+
   try {
-    let data = await ddbDocClient.send(new PutCommand(putItemParams));
-    res.json({ success: 'put call succeed!', url: req.url, data: data });
+    let data = await ddbDocClient.send(new UpdateCommand(updateItemParams));
+    res.statusCode = 200;
+    res.json({ success: 'update call succeed!', url: req.url, data: data });
   } catch (err) {
     res.statusCode = 500;
     res.json({ error: err, url: req.url, body: req.body });
@@ -266,9 +284,9 @@ app.delete(
   }
 );
 
-app.listen(3000, function () {
-  console.log('App started');
-});
+// app.listen(3000, function () {
+//   console.log('App started');
+// });
 
 // Export the app object. When executing the application local this does nothing. However,
 // to port it to AWS Lambda we will create a wrapper around that will load the app from
