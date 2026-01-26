@@ -64,114 +64,102 @@ const convertUrlType = (param, type) => {
  * HTTP Get method to list objects *
  ************************************/
 
-app.get(path, async function (req, res) {
-  var params = {
-    TableName: tableName,
-    Select: 'ALL_ATTRIBUTES'
-  };
+// app.get(path, async function (req, res) {
+//   var params = {
+//     TableName: tableName,
+//     Select: 'ALL_ATTRIBUTES'
+//   };
 
-  try {
-    const data = await ddbDocClient.send(new ScanCommand(params));
-    res.json(data.Items);
-  } catch (err) {
-    res.statusCode = 500;
-    res.json({ error: 'Could not load items: ' + err.message });
-  }
-});
+//   try {
+//     const data = await ddbDocClient.send(new ScanCommand(params));
+//     res.json(data.Items);
+//   } catch (err) {
+//     res.statusCode = 500;
+//     res.json({ error: 'Could not load items: ' + err.message });
+//   }
+// });
 
 /************************************
  * HTTP Get method to query objects *
  ************************************/
 
+// app.get(path + hashKeyPath, async function (req, res) {
+//   const condition = {};
+//   condition[partitionKeyName] = {
+//     ComparisonOperator: 'EQ'
+//   };
+
+// if (req.apiGateway) {
+//   condition[partitionKeyName]['AttributeValueList'] = [
+//     req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH
+//   ];
+// } else {
+//   try {
+//     condition[partitionKeyName]['AttributeValueList'] = [
+//       convertUrlType(req.params[partitionKeyName], partitionKeyType)
+//     ];
+//   } catch (err) {
+//     res.statusCode = 500;
+//     res.json({ error: 'Wrong column type ' + err });
+//   }
+// }
+
+//   let queryParams = {
+//     TableName: tableName,
+//     KeyConditions: condition
+//   };
+
+//   try {
+//     const data = await ddbDocClient.send(new QueryCommand(queryParams));
+//     res.json(data.Items);
+//   } catch (err) {
+//     res.statusCode = 500;
+//     res.json({ error: 'Could not load items: ' + err.message });
+//   }
+// });
+
+/*****************************************
+ * HTTP Get method for get single object *
+ *****************************************/
+//
 app.get(path + hashKeyPath, async function (req, res) {
-  const condition = {};
-  condition[partitionKeyName] = {
-    ComparisonOperator: 'EQ'
-  };
+  const params = {};
+  // if (req.apiGateway) {
+  //   params[partitionKeyName] =
+  //     req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  // } else {
+  //   params[partitionKeyName] = req.params[partitionKeyName];
+  // try {
+  //   params[partitionKeyName] = convertUrlType(
+  //     req.params[partitionKeyName],
+  //     partitionKeyType
+  //   );
+  // } catch (err) {
+  //   res.statusCode = 500;
+  //   res.json({ error: 'Wrong column type ' + err });
+  // }
+  // }
 
-  if (req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [
-      req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH
-    ];
-  } else {
-    try {
-      condition[partitionKeyName]['AttributeValueList'] = [
-        convertUrlType(req.params[partitionKeyName], partitionKeyType)
-      ];
-    } catch (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Wrong column type ' + err });
-    }
-  }
-
-  let queryParams = {
+  let getItemParams = {
     TableName: tableName,
-    KeyConditions: condition
+    Key: {
+      [partitionKeyName]: req.params[partitionKeyName]
+    } // { guid: "some-guid" }
   };
 
   try {
-    const data = await ddbDocClient.send(new QueryCommand(queryParams));
-    res.json(data.Items);
+    const data = await ddbDocClient.send(new GetCommand(getItemParams));
+    if (!data.Item) {
+      res.statusCode = 404;
+      res.json({ error: 'Group not found' });
+      return;
+    }
+    res.json({ data: data.Item });
   } catch (err) {
     res.statusCode = 500;
     res.json({ error: 'Could not load items: ' + err.message });
   }
 });
-
-/*****************************************
- * HTTP Get method for get single object *
- *****************************************/
-
-app.get(
-  path + '/object' + hashKeyPath + sortKeyPath,
-  async function (req, res) {
-    const params = {};
-    if (req.apiGateway) {
-      params[partitionKeyName] =
-        req.apiGateway.event.requestContext.identity.cognitoIdentityId ||
-        UNAUTH;
-    } else {
-      params[partitionKeyName] = req.params[partitionKeyName];
-      try {
-        params[partitionKeyName] = convertUrlType(
-          req.params[partitionKeyName],
-          partitionKeyType
-        );
-      } catch (err) {
-        res.statusCode = 500;
-        res.json({ error: 'Wrong column type ' + err });
-      }
-    }
-    if (hasSortKey) {
-      try {
-        params[sortKeyName] = convertUrlType(
-          req.params[sortKeyName],
-          sortKeyType
-        );
-      } catch (err) {
-        res.statusCode = 500;
-        res.json({ error: 'Wrong column type ' + err });
-      }
-    }
-
-    let getItemParams = {
-      TableName: tableName,
-      Key: params
-    };
-
-    try {
-      const data = await ddbDocClient.send(new GetCommand(getItemParams));
-      if (data.Item) {
-        res.json(data.Item);
-      } else {
-        res.json(data);
-      }
-    } catch (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Could not load items: ' + err.message });
-    }
-  }
-);
 
 /************************************
  * HTTP put method for adding members to the group - 멤버 추가 API *
